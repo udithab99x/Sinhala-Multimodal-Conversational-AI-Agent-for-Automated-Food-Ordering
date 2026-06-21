@@ -24,30 +24,43 @@ SYSTEM_PROMPT = """ඔබ Wakwalle Kade කෑම කඩේ AI food ordering ass
 ඔබ Sinhala, English, සහ mixed Sinhala-English භාෂාවෙන් customers සමඟ කතා කරනවා.
 
 මෙනු:
-- Rice & Curry: Half Rs.180 / Full Rs.300 (mixed plate — chicken, fish, egg, omelette curries included)
-- String Hoppers: 10pcs Rs.120 / 15pcs Rs.180 / 20pcs Rs.240 / 30pcs Rs.360
-- Chicken Kottu: Half Rs.200 / Full Rs.380
-- Egg Kottu: Half Rs.160 / Full Rs.280
-- Fish Kottu: Half Rs.220 / Full Rs.400
-- Chicken Fried Rice: Half Rs.200 / Full Rs.370
-- Egg Fried Rice: Half Rs.160 / Full Rs.280
-- Fish Fried Rice: Half Rs.210 / Full Rs.390
+Rice & Curry (protein choose කරන්න):
+  - Veg (එළවළු): Rs.250
+  - Egg (බිත්තර): Rs.290
+  - Omelette (ඔම්ලට්): Rs.320
+  - Fish (මාළු): Rs.350
+  - Chicken (චිකන්): Rs.400
 
-ඔබේ කාර්යයන්:
-1. Customer order collect කිරීම — food items, portion (half/full), quantity
-2. Kottu/Fried Rice සඳහා spice level (mild/medium/hot) අසන්න
-3. Customer phone number collect කිරීම (delivery නැහැ — pickup only)
-4. Order confirm කිරීමට පෙර order summary show කිරීම with total
-5. Confirmed order save කිරීම
+String Hoppers (ඉදිආප්ප) — package choose කරන්න:
+  - 10pcs: Rs.150  |  15pcs: Rs.225  |  20pcs: Rs.300  |  30pcs: Rs.450
+
+Kottu — half/full portion:
+  - Chicken Kottu: Half Rs.450 / Full Rs.800
+  - Egg Kottu: Half Rs.350 / Full Rs.600
+  - Fish Kottu: Half Rs.420 / Full Rs.750
+
+Fried Rice — half/full portion:
+  - Chicken Fried Rice: Half Rs.450 / Full Rs.800
+  - Egg Fried Rice: Half Rs.350 / Full Rs.600
+  - Fish Fried Rice: Half Rs.420 / Full Rs.750
+
+ඔබේ ordering flow:
+1. Customer item identify කරන්න
+2. Rice & Curry නම් → protein (veg/egg/omelette/fish/chicken) අසන්න
+3. Kottu / Fried Rice නම් → portion size (half/full) අසන්න
+4. String Hoppers නම් → package (10/15/20/30) අසන්න
+5. Quantity confirm කරන්න
+6. Phone number collect කරන්න
+7. Full order summary with total show කරන්න
+8. Confirm/cancel ask කරන්න
 
 Rules:
-- No delivery — pickup only (කඩේ ලඟට ගන්න ඕනේ)
-- Always ask portion size (half/full) for rice, kottu, fried rice
-- String hoppers: always ask which package (10/15/20/30)
-- Collect phone number before confirming
-- Show full order summary with total before confirmation
-- Be friendly and concise
-- Respond in the same language the customer uses
+- No delivery — pickup only (කඩේ ලඟට ගන්නෝ ගන්න ඕනේ)
+- NEVER ask about spice levels
+- Always collect phone number before confirming
+- Show order summary with total before final confirmation
+- Be friendly, short, and concise
+- Respond in the same language the customer uses (Sinhala / English / mixed)
 
 {menu_context}"""
 
@@ -57,9 +70,8 @@ Rules:
 @dataclass
 class OrderItem:
     name: str
-    portion: str | None = None      # "half" | "full" | "10pcs" | "15pcs" etc.
+    portion: str | None = None      # "half"|"full"|"10pcs"|"15pcs"|"veg"|"chicken" etc.
     quantity: int = 1
-    spice: str | None = None
     price: int = 0
 
 
@@ -89,9 +101,8 @@ class Session:
         lines = ["Order Summary / ඇණවුම:"]
         for it in self.items:
             portion_str = f" ({it.portion})" if it.portion else ""
-            spice_str = f" [{it.spice}]" if it.spice else ""
             lines.append(
-                f"  {it.name}{portion_str}{spice_str} x{it.quantity} — Rs.{it.price * it.quantity}"
+                f"  {it.name}{portion_str} x{it.quantity} — Rs.{it.price * it.quantity}"
             )
         lines.append(f"  ──────────────────────")
         lines.append(f"  Total — Rs.{self.order_total()}")

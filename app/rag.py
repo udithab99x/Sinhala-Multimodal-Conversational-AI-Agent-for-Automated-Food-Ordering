@@ -66,21 +66,14 @@ class MenuRAG:
             cat = item["category"]
             categories.setdefault(cat, []).append(item)
 
-        lines = [f"Restaurant: {self._restaurant['name']}",
-                 f"Min order: Rs.{self._restaurant['min_order_lkr']}  |  Delivery fee: Rs.{self._restaurant['delivery_fee_lkr']}",
-                 ""]
+        lines = [f"Shop: {self._restaurant['name']} — Pickup only", ""]
         for cat, items in categories.items():
             lines.append(f"[{cat.upper()}]")
             for it in items:
-                avail = "✓" if it.get("available", True) else "✗ (unavailable)"
-                lines.append(f"  {it['name']} ({it['sinhala']}) – Rs.{it['price_lkr']} {avail}")
+                avail = "✓" if it.get("available", True) else "✗ unavailable"
+                lines.append(f"  {it['name']} ({it['sinhala']}) {avail}")
+                lines.append(f"    {self._price_text(it)}")
             lines.append("")
-
-        if self._offers:
-            lines.append("[SPECIAL OFFERS]")
-            for o in self._offers:
-                lines.append(f"  {o['name']} – Rs.{o['price_lkr']} ({o['discount_percent']}% off)")
-
         return "\n".join(lines)
 
     def get_context_for_query(self, query: str) -> str:
@@ -90,26 +83,31 @@ class MenuRAG:
             return "No relevant menu items found."
         lines = ["Relevant menu items:"]
         for h in hits:
-            if "price_lkr" in h:
-                avail = "Available" if h.get("available", True) else "NOT available"
-                lines.append(
-                    f"- {h['name']} ({h.get('sinhala','')}) Rs.{h['price_lkr']} — {avail}"
-                )
-                if h.get("addons"):
-                    lines.append(f"  Add-ons: {', '.join(h['addons'])}")
-            elif "original_price_lkr" in h:
-                lines.append(
-                    f"- OFFER: {h['name']} Rs.{h['price_lkr']} (was Rs.{h['original_price_lkr']})"
-                )
+            avail = "Available" if h.get("available", True) else "NOT available"
+            lines.append(f"- {h['name']} ({h.get('sinhala','')}) — {avail}")
+            lines.append(f"  {self._price_text(h)}")
         return "\n".join(lines)
 
     # ── Helpers ───────────────────────────────────────────────────────────────
 
+    def _price_text(self, item: dict) -> str:
+        """Format pricing depending on item type (options/packages/portions)."""
+        if "options" in item:
+            parts = [f"{o['protein']} Rs.{o['price_lkr']}" for o in item["options"]]
+            return "Protein options: " + " | ".join(parts)
+        if "packages" in item:
+            parts = [f"{p['count']}pcs Rs.{p['price_lkr']}" for p in item["packages"]]
+            return "Packages: " + " | ".join(parts)
+        if "portions" in item:
+            parts = [f"{p['size']} Rs.{p['price_lkr']}" for p in item["portions"]]
+            return "Portions: " + " | ".join(parts)
+        if "price_lkr" in item:
+            return f"Rs.{item['price_lkr']}"
+        return ""
+
     def _item_to_text(self, item: dict) -> str:
         parts = [item["name"], item.get("sinhala", ""), item.get("category", ""),
-                 item.get("description", "")]
-        if item.get("addons"):
-            parts.extend(item["addons"])
+                 item.get("description", ""), self._price_text(item)]
         return " ".join(str(p) for p in parts if p)
 
     def _offer_to_text(self, offer: dict) -> str:
