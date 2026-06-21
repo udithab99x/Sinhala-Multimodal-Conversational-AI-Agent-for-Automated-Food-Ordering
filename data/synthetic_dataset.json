@@ -1,0 +1,2489 @@
+[
+  {
+    "id": "conv_001",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Excuse me, Rice & Curry එකක් order කරන්න පුලුවන්ද?", "translation": "Excuse me, can I order a Rice & Curry?"},
+      {"role": "assistant", "content": "ඔව් පුලුවන්. Rice & Curry එකට මොන වගේ protein එකක්ද ඕනේ? අපිට veg, egg, omelette, fish, සහ chicken තියෙනවා."},
+      {"role": "user", "content": "Chicken දාන්න. එකක් ඇති.", "translation": "Put chicken. One is enough."},
+      {"role": "assistant", "content": "හරි, chicken rice & curry එකක්. Order එක confirm කරන්න ඔයාගේ phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0771234567", "translation": "0771234567"},
+      {"role": "assistant", "content": "ස්තූතියි. ඔයාගේ order summary එක: 1x Chicken Rice & Curry - Rs. 220. Total එක Rs. 220 වෙනවා. මේක pickup කරන්න confirm කරනවාද?"},
+      {"role": "user", "content": "ඔව්, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "හරිම සන්තෝෂයි! ඔයාගේ order number එක #WK001. විනාඩි 10-15 කින් කඩෙන් ඇවිත් pickup කරගන්න පුලුවන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0771234567"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_002",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi bro, can I get some chicken kottu for pickup?", "translation": "Hi bro, can I get some chicken kottu for pickup?"},
+      {"role": "assistant", "content": "Sure machang! Do you want a half portion or a full portion? And how many portions do you need?"},
+      {"role": "user", "content": "Make it one full portion, machang.", "translation": "Make it one full portion, machang."},
+      {"role": "assistant", "content": "Got it. Can you please provide your phone number to proceed with the order?"},
+      {"role": "user", "content": "Yeah, it's 0719876543.", "translation": "Yeah, it's 0719876543."},
+      {"role": "assistant", "content": "Thanks. Here is your order summary: 1x Full Chicken Kottu - Rs. 380. Total amount is Rs. 380. Shall I confirm this for pickup?"},
+      {"role": "user", "content": "Yes, please confirm.", "translation": "Yes, please confirm."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK002. It will be ready for pickup in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0719876543"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 380
+    }
+  },
+  {
+    "id": "conv_003",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඉදිආප්ප ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I want to order string hoppers."},
+      {"role": "assistant", "content": "ආයුබෝවන්! අප සතුව ඉදිආප්ප ගෙඩි 10, 15, 20 සහ 30 බැගින් ඇති පැකේජ තිබෙනවා. ඔබ කැමති කුමන පැකේජයටද සහ ඉන් කීයක් අවශ්‍යද?"},
+      {"role": "user", "content": "මට ගෙඩි 20 පැකේජයෙන් එකක් ලබා දෙන්න.", "translation": "Please give me one package of 20 pieces."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ ඇණවුම ලියාපදිංචි කිරීම සඳහා කරුණාකර දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0723456789.", "translation": "My number is 0723456789."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම් විස්තරය: ඉදිආප්ප ගෙඩි 20 පැකේජය x1 - රුපියල් 240. මුළු මුදල රුපියල් 240 වෙනවා. මෙය ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, එය ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "බොහෝම ස්තූතියි! ඔබගේ ඇණවුම් අංකය #WK003. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් මෙය රැගෙන යා හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "package_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "20pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0723456789"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 240
+    }
+  },
+  {
+    "id": "conv_004",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං ෆ්‍රයිඩ් රයිස් තියෙනවද?", "translation": "Machan do you have fried rice?"},
+      {"role": "assistant", "content": "ඔව් මචං තියෙනවා. චිකන්, බිත්තර සහ මාළු ෆ්‍රයිඩ් රයිස් තියෙනවා. මොකක්ද ඕනේ? බාගෙද ෆුල් (full) ද කියලත් කියන්න."},
+      {"role": "user", "content": "බිත්තර ෆ්‍රයිඩ් රයිස් බාගයක් දීපන්.", "translation": "Give me a half egg fried rice."},
+      {"role": "assistant", "content": "එල. Phone number එක දාපන් order එක දාගන්න."},
+      {"role": "user", "content": "0751112223", "translation": "0751112223"},
+      {"role": "assistant", "content": "හරි. 1x බිත්තර ෆ්‍රයිඩ් රයිස් (බාගෙ) - රු. 160. මුළු ගණන රු. 160. Order එක okay ද?"},
+      {"role": "user", "content": "අයියෝ, මට price එක වැඩි වගේ, cancel කරපන් මචං.", "translation": "Aiyo, the price is too high for me, cancel it machan."},
+      {"role": "assistant", "content": "හරි මචං, කිසි අවුලක් නැහැ. Order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0751112223"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 160
+    }
+  },
+  {
+    "id": "conv_005",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට fish kottu එකක් ගන්න ඕනේ.", "translation": "Hi, I want to get a fish kottu."},
+      {"role": "assistant", "content": "හරි, fish kottu එක half portion ද ඕනේ full portion ද? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Full portion එකක් දෙන්න.", "translation": "Give me a full portion."},
+      {"role": "assistant", "content": "Ok, 1x Full Fish Kottu. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0763334445", "translation": "0763334445"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Full Fish Kottu - Rs. 400. Total එක Rs. 400. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK004. විනාඩි 10-15 කින් shop එකට ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0763334445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 400
+    }
+  },
+  {
+    "id": "conv_006",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Aiyo, I'm so hungry. Can I order rice & curry right now?", "translation": "Aiyo, I'm so hungry. Can I order rice & curry right now?"},
+      {"role": "assistant", "content": "Yes, of course! Which protein would you like with your Rice & Curry? Options are veg, egg, omelette, fish, or chicken."},
+      {"role": "user", "content": "Let's go with omelette. Just 1 portion.", "translation": "Let's go with omelette. Just 1 portion."},
+      {"role": "assistant", "content": "Omelette rice & curry, noted. Please share your phone number for the shop pickup verification."},
+      {"role": "user", "content": "Here you go: 0785556667.", "translation": "Here you go: 0785556667."},
+      {"role": "assistant", "content": "Great. Order summary: 1x Omelette Rice & Curry - Rs. 180. Total is Rs. 180. Can I confirm this?"},
+      {"role": "user", "content": "Yes, please do it.", "translation": "Yes, please do it."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK005. Come to the shop in 10-15 minutes to pick it up."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0785556667"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_007",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "සුභ සැන්දෑවක්, චිකන් ෆ්‍රයිඩ් රයිස් මිල ගණන් දැනගත හැකිද?", "translation": "Good evening, can I know the prices for chicken fried rice?"},
+      {"role": "assistant", "content": "සුභ සැන්දෑවක්! චිකන් ෆ්‍රයිඩ් රයිස් බාගයක් රුපියල් 200ක් වන අතර ෆුල් (full) ප්‍රමාණය රුපියල් 370ක් වේ. ඔබ ඇණවුම් කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, මට ෆුල් (full) ප්‍රමාණයේ චිකන් ෆ්‍රයිඩ් රයිස් එකක් අවශ්‍යයි.", "translation": "Yes, I need one full portion of chicken fried rice."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ දුරකථන අංකය කරුණාකර අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0712223334.", "translation": "My phone number is 0712223334."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x චිකන් ෆ්‍රයිඩ් රයිස් (Full) - රුපියල් 370. මුළු එකතුව රුපියල් 370 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි! ඔබගේ ඇණවුම් අංකය #WK006. විනාඩි 10-15 කින් පැමිණ ලබාගත හැක. මතක් කිරීමක්: අප ආයතනයේ බෙදාහැරීම් (delivery) සිදු නොකෙරේ."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0712223334"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 370
+    }
+  },
+  {
+    "id": "conv_008",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "ඉදිආප්ප තියෙනවද බං? කීයද ගණන්?", "translation": "Are there string hoppers dude? What are the prices?"},
+      {"role": "assistant", "content": "තියෙනවා මචං. ගෙඩි 10ක් රු. 120, 15ක් රු. 180, 20ක් රු. 240, සහ 30ක් රු. 360. මොන පැකේජ් එකද ඕනේ?"},
+      {"role": "user", "content": "මට ගෙඩි 30 පැකේජ් එකෙන් එකක් දාපන්.", "translation": "Put me one package of 30 pieces."},
+      {"role": "assistant", "content": "එලකිරි. Phone number එක කියපන් මචං."},
+      {"role": "user", "content": "0704445556", "translation": "0704445556"},
+      {"role": "assistant", "content": "හරි, 1x ඉදිආප්ප (ගෙඩි 30) - රු. 360. මුළු ගණන රු. 360. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, ok.", "translation": "Yes dude, ok."},
+      {"role": "assistant", "content": "නියමයි. Order number එක #WK007. විනාඩි 10-15 කින් ඇවිත් කඩෙන් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "package_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0704445556"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 360
+    }
+  },
+  {
+    "id": "conv_009",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Bro, මට group එකකට order එකක් දාන්න ඕනේ.", "translation": "Bro, I want to place an order for a group."},
+      {"role": "assistant", "content": "Elakiri bro! කියන්න මොනවද ඕනේ කියලා?"},
+      {"role": "user", "content": "Egg Fried Rice full ඒවා 4ක් දෙන්න.", "translation": "Give 4 full Egg Fried Rices."},
+      {"role": "assistant", "content": "හරි, 4x Full Egg Fried Rice. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0778889990", "translation": "0778889990"},
+      {"role": "assistant", "content": "Great. Order summary: 4x Full Egg Fried Rice - Rs. 1120 (Rs. 280 each). Total එක Rs. 1120. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න මචං.", "translation": "Yes, confirm it machan."},
+      {"role": "assistant", "content": "Done! Order number එක #WK008. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "4"},
+        {"type": "phone_number", "value": "0778889990"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1120
+    }
+  },
+  {
+    "id": "conv_010",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Aney, can I get fish rice & curry please?", "translation": "Aney, can I get fish rice & curry please?"},
+      {"role": "assistant", "content": "Sure! How many fish rice & curry portions do you want?"},
+      {"role": "user", "content": "Just one is enough, thank you.", "translation": "Just one is enough, thank you."},
+      {"role": "assistant", "content": "Perfect. Can you give me your mobile number for the pickup order?"},
+      {"role": "user", "content": "It's 0710001112.", "translation": "It's 0710001112."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Fish Rice & Curry - Rs. 200. Total is Rs. 200. Is this confirmed?"},
+      {"role": "user", "content": "Yes, confirmed.", "translation": "Yes, confirmed."},
+      {"role": "assistant", "content": "Your order is accepted! Order number is #WK009. Please pick it up from the shop in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0710001112"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_011",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට එළවළු කෑම​ (veg rice & curry) 3ක් අවශ්‍යයි.", "translation": "Hello, I need 3 vegetable rice & curries."},
+      {"role": "assistant", "content": "ආයුබෝවන්! එළවළු කෑම​ 3ක්, පැහැදිලියි. කරුණාකර ඔබගේ ජංගම දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0725554443.", "translation": "My number is 0725554443."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 3x එළවළු කෑම​ - රුපියල් 450 (එකක් රු. 150 බැගින්). මුළු එකතුව රුපියල් 450 කි. මෙම ඇණවුම ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකව ලියාපදිංචි කළා. ඔබගේ ඇණවුම් අංකය #WK010. විනාඩි 10-15 කින් පැමිණ කඩෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "veg", "sinhala": "එළවළු"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0725554443"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 450
+    }
+  },
+  {
+    "id": "conv_012",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Egg Kottu තියෙනවද? කීයද වෙන්නේ?", "translation": "Is there Egg Kottu? How much is it?"},
+      {"role": "assistant", "content": "තියෙනවා. බාගයක් රු. 160, full එකක් රු. 280. මොකක්ද ඕනේ?"},
+      {"role": "user", "content": "Egg Kottu බාගයක් දාන්න.", "translation": "Put a half Egg Kottu."},
+      {"role": "assistant", "content": "හරි. Phone number එක කියන්න."},
+      {"role": "user", "content": "0776667778", "translation": "0776667778"},
+      {"role": "assistant", "content": "1x Egg Kottu (බාගෙ) - රු. 160. මුළු ගණන රු. 160. Confirm ද?"},
+      {"role": "user", "content": "නැහැ මචං, මට වැඩක් සෙට් උනා, ඕක cancel කරපන්.", "translation": "No machan, I got some work, cancel that."},
+      {"role": "assistant", "content": "හරි, ඇණවුම අවලංගු කළා."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0776667778"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 160
+    }
+  },
+  {
+    "id": "conv_013",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Machan, මට ඉදිආප්ප 15ක පැකේජ් එකක් ඕනේ.", "translation": "Machan, I need a 15 piece string hopper package."},
+      {"role": "assistant", "content": "Elakiri, ඉදිආප්ප 15ක්. Quantity එක 1යි නේද? Phone number එක දාන්න මචං."},
+      {"role": "user", "content": "ඔව් 1යි. Number එක 0714443332.", "translation": "Yes 1. Number is 0714443332."},
+      {"role": "assistant", "content": "Ok. Order summary: 1x ඉදිආප්ප (15pcs) - Rs. 180. Total එක Rs. 180. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, මචං.", "translation": "Yes, machan."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK011. විනාඩි 10-15 කින් shop එකට ඇවිත් ගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0714443332"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_014",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey, can I order multiple items for pickup?", "translation": "Hey, can I order multiple items for pickup?"},
+      {"role": "assistant", "content": "Yes, sure! Tell me what you need, please."},
+      {"role": "user", "content": "I want one chicken rice & curry and one half chicken fried rice.", "translation": "I want one chicken rice & curry and one half chicken fried rice."},
+      {"role": "assistant", "content": "Great combination. Can you please share your phone number?"},
+      {"role": "user", "content": "My number is 0759998887.", "translation": "My number is 0759998887."},
+      {"role": "assistant", "content": "Perfect. Order summary: 1x Chicken Rice & Curry (Rs. 220) + 1x Half Chicken Fried Rice (Rs. 200). Total amount is Rs. 420. Confirming this?"},
+      {"role": "user", "content": "Yes, confirm it machang.", "translation": "Yes, confirm it machang."},
+      {"role": "assistant", "content": "All set! Your order number is #WK012. It will be ready in 10-15 minutes at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Rice & Curry"},
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0759998887"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 420
+    }
+  },
+  {
+    "id": "conv_015",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර කෑම​ (egg rice & curry) එකක් ලබා දෙන්න.", "translation": "Hello, please give me one egg rice & curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! බිත්තර කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0781231234.", "translation": "My phone number is 0781231234."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර කෑම​ - රුපියල් 170. මුළු මුදල රුපියල් 170 කි. මෙය ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර ස්ථිර කරන්න.", "translation": "Yes, please confirm."},
+      {"role": "assistant", "content": "ඇණවුම ස්ථිරයි. ඔබගේ ඇණවුම් අංකය #WK013. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0781231234"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 170
+    }
+  },
+  {
+    "id": "conv_016",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, Fish Fried Rice තියෙනවද?", "translation": "Machan, is there Fish Fried Rice?"},
+      {"role": "assistant", "content": "ඔව් මචං තියෙනවා. Half එකද ඕනේ Full එකද? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Full එකක් දීපන් මචං.", "translation": "Give me a full one machan."},
+      {"role": "assistant", "content": "එල. Phone number එක දාපන් ඉක්මනට."},
+      {"role": "user", "content": "0767778889", "translation": "0767778889"},
+      {"role": "assistant", "content": "හරි, 1x Fish Fried Rice (Full) - රු. 390. මුළු එකතුව රු. 390. Order එක okay ද?"},
+      {"role": "user", "content": "Okay මචං, දාන්න.", "translation": "Okay machan, put it."},
+      {"role": "assistant", "content": "නියමයි බං. Order number එක #WK014. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0767778889"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 390
+    }
+  },
+  {
+    "id": "conv_017",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers ඕනේ.", "translation": "Hi, I need string hoppers."},
+      {"role": "assistant", "content": "Hi! අපිට 10, 15, 20, 30 pieces පැකේජ් තියෙනවා. ඔයාට මොන පැකේජ් එකද ඕනේ?"},
+      {"role": "user", "content": "10 කෑලි පැකේජ් එකක් ඇති.", "translation": "A 10 piece package is enough."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (10pcs). Please give your phone number."},
+      {"role": "user", "content": "0712345670", "translation": "0712345670"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (10pcs) - Rs. 120. Total එක Rs. 120. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, ok.", "translation": "Yes, ok."},
+      {"role": "assistant", "content": "හරි! Order number එක #WK015. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "package_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "10pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0712345670"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 120
+    }
+  },
+  {
+    "id": "conv_018",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, I want to order 5 chicken fried rices for my roomies.", "translation": "Hey bro, I want to order 5 chicken fried rices for my roomies."},
+      {"role": "assistant", "content": "Wow, big order! Do you want half portions or full portions for those 5?"},
+      {"role": "user", "content": "All half portions, bro.", "translation": "All half portions, bro."},
+      {"role": "assistant", "content": "Got it. Can you share your phone number to process this group order?"},
+      {"role": "user", "content": "Sure, it's 0774443322.", "translation": "Sure, it's 0774443322."},
+      {"role": "assistant", "content": "Thanks. Order summary: 5x Half Chicken Fried Rice - Rs. 1000 (Rs. 200 each). Total is Rs. 1000. Confirming this for shop pickup?"},
+      {"role": "user", "content": "Yes, perfect. Confirm it.", "translation": "Yes, perfect. Confirm it."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK016. It will be ready in 10-15 minutes at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "5"},
+        {"type": "phone_number", "value": "0774443322"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1000
+    }
+  },
+  {
+    "id": "conv_019",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට චිකන් කොත්තු (Chicken Kottu) වල මිල ගණන් පවසන්න.", "translation": "Hello, tell me the prices of Chicken Kottu."},
+      {"role": "assistant", "content": "ආයුබෝවන්! චිකන් කොත්තු බාගයක් රුපියල් 200ක් සහ ෆුල් (full) ප්‍රමාණයක් රුපියල් 380ක් වේ."},
+      {"role": "user", "content": "කරුණාකර මට බාගයේ චිකන් කොත්තු 3ක් ලබා දෙන්න.", "translation": "Please give me 3 half chicken kottus."},
+      {"role": "assistant", "content": "පැහැදිලියි, චිකන් කොත්තු බාග ප්‍රමාණයේ ඒවා 3ක්. ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0715556662.", "translation": "My number is 0715556662."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 3x චිකන් කොත්තු (Half) - රුපියල් 600. මුළු මුදල රුපියල් 600 කි. මෙය ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK017. විනාඩි 10-15 කින් අපගේ කඩෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0715556662"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 600
+    }
+  },
+  {
+    "id": "conv_020",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Rice & curry එකක් ඕනේ.", "translation": "I want a rice & curry."},
+      {"role": "assistant", "content": "මොනවා එක්කද ඕනේ මචං? Veg, egg, omelette, fish, chicken තියෙනවා."},
+      {"role": "user", "content": "Omelette එක්ක දාන්න.", "translation": "Put it with an omelette."},
+      {"role": "assistant", "content": "හරි. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0729990001", "translation": "0729990001"},
+      {"role": "assistant", "content": "1x Omelette Rice & Curry - රු. 180. Total රු. 180. Confirm ද?"},
+      {"role": "user", "content": "Confirm මචං.", "translation": "Confirm machan."},
+      {"role": "assistant", "content": "එල. Order number එක #WK018. විනාඩි 10-15 කින් ඇවිත් අරන් යන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0729990001"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_021",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 30 කෑල්ලේ පැකේජ් එකක් ඕනේ.", "translation": "Hi, I need a 30 piece string hopper package."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (30pcs). Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0761119992", "translation": "0761119992"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (30pcs) - Rs. 360. Total එක Rs. 360. Confirm කරනවාද?"},
+      {"role": "user", "content": "අනේ, යාළුවා එපා කිව්වා. Cancel කරන්න please.", "translation": "Aney, my friend said no. Cancel it please."},
+      {"role": "assistant", "content": "No problem, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0761119992"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 360
+    }
+  },
+  {
+    "id": "conv_022",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Nah, I don't want cooking today. Bro, give me a fish kottu half portion.", "translation": "Nah, I don't want cooking today. Bro, give me a fish kottu half portion."},
+      {"role": "assistant", "content": "No cooking is best! 1x Half Fish Kottu. Can you share your mobile number?"},
+      {"role": "user", "content": "Sure, it's 0773332211.", "translation": "Sure, it's 0773332211."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Half Fish Kottu - Rs. 220. Total is Rs. 220. Is this okay to confirm?"},
+      {"role": "user", "content": "Yes, confirm machang.", "translation": "Yes, confirm machang."},
+      {"role": "assistant", "content": "Done! Your order number is #WK019. Ready in 10-15 minutes for pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0773332211"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_023",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට මාළු කෑම​ (fish rice & curry) එකක් ඇණවුම් කිරීමට හැකිකමක් පවතීද?", "translation": "Hello, is it possible for me to order one fish rice & curry?"},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඔව්, නිසැකවම පුලුවන්. කරුණාකර ඔබගේ දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0707778881.", "translation": "My phone number is 0707778881."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x මාළු කෑම​ - රුපියල් 200. මුළු මුදල රුපියල් 200 කි. මෙම ඇණවුම ස්ථිර කිරීමට ඔබ එකඟද?"},
+      {"role": "user", "content": "ඔව්, මම එකඟයි. ස්ථිර කරන්න.", "translation": "Yes, I agree. Confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකව සම්පූර්ණ කළා. ඔබගේ ඇණවුම් අංකය #WK020. විනාඩි 10-15 කින් පැමිණ ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0707778881"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_024",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් ෆ්‍රයිඩ් රයිස් full එකකුයි, බිත්තර කොත්තු full එකකුයි දාපන්.", "translation": "Machan, put one full chicken fried rice and one full egg kottu."},
+      {"role": "assistant", "content": "එලම කෑම ටික. Order එක දාගන්න phone number එක කියපන් බං."},
+      {"role": "user", "content": "අංකය 0716665554.", "translation": "The number is 0716665554."},
+      {"role": "assistant", "content": "හරි මචං. 1x Full Chicken Fried Rice (රු. 370) + 1x Full Egg Kottu (රු. 280). මුළු එකතුව රු. 650. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, confirm.", "translation": "Yes dude, confirm."},
+      {"role": "assistant", "content": "ගින්දර! Order number එක #WK021. විනාඩි 10-15 කින් ඇවිත් කඩෙන් ගනින්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0716665554"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 650
+    }
+  },
+  {
+    "id": "conv_025",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට Rice & Curry එකක් ඕනේ.", "translation": "Hi, I want a Rice & Curry."},
+      {"role": "assistant", "content": "Hi! Rice & Curry එකට මොන protein එකද ඕනේ? Veg, egg, omelette, fish, chicken තියෙනවා."},
+      {"role": "user", "content": "Veg එකක් දෙන්න.", "translation": "Give a veg one."},
+      {"role": "assistant", "content": "හරි, 1x Veg Rice & Curry. Please share your phone number."},
+      {"role": "user", "content": "0784445551", "translation": "0784445551"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Veg Rice & Curry - Rs. 150. Total එක Rs. 150. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! Order number එක #WK022. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "veg", "sinhala": "එළවළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0784445551"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 150
+    }
+  },
+  {
+    "id": "conv_026",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Aiyo, I forgot to order food for dinner. Can I get 3 portions of string hoppers?", "translation": "Aiyo, I forgot to order food for dinner. Can I get 3 portions of string hoppers?"},
+      {"role": "assistant", "content": "Don't worry! What size of packages do you want for those 3 portions? We have 10, 15, 20, or 30 pieces packages."},
+      {"role": "user", "content": "Give me three packages of 15 pieces, bro.", "translation": "Give me three packages of 15 pieces, bro."},
+      {"role": "assistant", "content": "Got it, 3x 15pcs packages. Can you give me your contact number?"},
+      {"role": "user", "content": "Yes, it is 0762223334.", "translation": "Yes, it is 0762223334."},
+      {"role": "assistant", "content": "Thanks! Order summary: 3x String Hoppers (15pcs) - Rs. 540 (Rs. 180 each). Total is Rs. 540. Confirming this order?"},
+      {"role": "user", "content": "Yes, confirm it machang.", "translation": "Yes, confirm it machang."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK023. You can pick it up from the shop in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "package_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0762223334"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 540
+    }
+  },
+  {
+    "id": "conv_027",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර ෆ්‍රයිඩ් රයිස් (Egg Fried Rice) එකක් අවශ්‍යයි.", "translation": "Hello, I need one Egg Fried Rice."},
+      {"role": "assistant", "content": "ආයුබෝවන්! බිත්තර ෆ්‍රයිඩ් රයිස් එක බාගයක්ද ෆුල් (full) ප්‍රමාණයක්ද අවශ්‍ය?"},
+      {"role": "user", "content": "මට බාගයක් (half) ප්‍රමාණය සෑහේ.", "translation": "A half portion is enough for me."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ ඇණවුම ඉදිරියට කරගෙන යාමට කරුණාකර දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0714445552.", "translation": "My number is 0714445552."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර ෆ්‍රයිඩ් රයිස් (Half) - රුපියල් 160. මුළු මුදල රුපියල් 160 කි. මෙය ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර එය ස්ථිර කරන්න.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK024. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0714445552"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 160
+    }
+  },
+  {
+    "id": "conv_028",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් කොත්තු බාගයක් තියෙනවද?", "translation": "Machan, is there a half chicken kottu?"},
+      {"role": "assistant", "content": "ඔව් මචං තියෙනවා. එකක්ද ඕනේ?"},
+      {"role": "user", "content": "ඔව්, එකක් දාපන්.", "translation": "Yes, put one."},
+      {"role": "assistant", "content": "එල. Phone number එක කියපන් මචං."},
+      {"role": "user", "content": "0758889991", "translation": "0758889991"},
+      {"role": "assistant", "content": "හරි, 1x චිකන් කොත්තු (බාගෙ) - රු. 200. Total එක රු. 200. Confirm කරනවද?"},
+      {"role": "user", "content": "අයිතිකාරයා මාරු උනා බං, cancel කරපන්.", "translation": "The owner changed dude, cancel it."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0758889991"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_029",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට බිත්තර කෑම​ 2ක් ඕනේ.", "translation": "Hi, I need 2 egg rice & curries."},
+      {"role": "assistant", "content": "හරි, 2x Egg Rice & Curry. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0771112224", "translation": "0771112224"},
+      {"role": "assistant", "content": "Thank you. Order summary: 2x Egg Rice & Curry - Rs. 340 (Rs. 170 each). Total එක Rs. 340. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! Order number එක #WK025. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "2"},
+        {"type": "phone_number", "value": "0771112224"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 340
+    }
+  },
+  {
+    "id": "conv_030",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Machang, what are the portion sizes for fried rice?", "translation": "Machang, what are the portion sizes for fried rice?"},
+      {"role": "assistant", "content": "We have half and full portions for all fried rice, bro. No spice levels. What would you like?"},
+      {"role": "user", "content": "Give me one full portion of fish fried rice.", "translation": "Give me one full portion of fish fried rice."},
+      {"role": "assistant", "content": "Great choice. Can you provide your phone number for the order?"},
+      {"role": "user", "content": "Yes, 0702221115.", "translation": "Yes, 0702221115."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Fish Fried Rice - Rs. 390. Total amount is Rs. 390. Okay to confirm?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK026. Ready in 10-15 minutes for shop pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["portion_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0702221115"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 390
+    }
+  },
+  {
+    "id": "conv_031",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඉදිආප්ප පැකේජ් එකක් අවශ්‍යයි.", "translation": "Hello, I need a string hopper package."},
+      {"role": "assistant", "content": "ආයුබෝවන්! අප සතුව ගෙඩි 10 (රු. 120), 15 (රු. 180), 20 (රු. 240), සහ 30 (රු. 360) බැගින් පැකේජ් පවතී. ඔබ කැමති කුමන ප්‍රමාණයටද?"},
+      {"role": "user", "content": "මට ගෙඩි 30ක පැකේජ් එකක් ලබා දෙන්න.", "translation": "Please give me a package of 30 pieces."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ දුරකථන අංකය කරුණාකර සටහන් කරන්න."},
+      {"role": "user", "content": "මගේ අංකය 0728887776.", "translation": "My number is 0728887776."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඉදිආප්ප (30pcs) - රුපියල් 360. මුළු මුදල රුපියල් 360 කි. මෙය ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK027. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "package_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0728887776"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 360
+    }
+  },
+  {
+    "id": "conv_032",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "බිත්තර කොත්තු තියෙනවද බං?", "translation": "Is there egg kottu dude?"},
+      {"role": "assistant", "content": "ඔව් බං, බාගෙද full ද ඕනේ? Quantity එකත් කියපන්."},
+      {"role": "user", "content": "Full ඒවා 3ක් දාපන් මචං යාළුවෝ සෙට් එකකට.", "translation": "Put 3 full ones machan for a set of friends."},
+      {"role": "assistant", "content": "එලකිරි, full egg kottu 3ක්. Phone number එක දාපන් බං."},
+      {"role": "user", "content": "0783334442", "translation": "0783334442"},
+      {"role": "assistant", "content": "හරි. 3x Full Egg Kottu - රු. 840. මුළු එකතුව රු. 840. Confirm කරනවද?"},
+      {"role": "user", "content": "ඔව් මචං, confirm.", "translation": "Yes machan, confirm."},
+      {"role": "assistant", "content": "එල. Order number එක #WK028. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0783334442"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 840
+    }
+  },
+  {
+    "id": "conv_033",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey, මට chicken kottu එකක් ඕනේ.", "translation": "Hey, I need a chicken kottu."},
+      {"role": "assistant", "content": "හරි, chicken kottu එක half ද ඕනේ full ද? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Half portion එකක් ඇති.", "translation": "A half portion is enough."},
+      {"role": "assistant", "content": "Ok, 1x Half Chicken Kottu. Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0765551112", "translation": "0765551112"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Half Chicken Kottu - Rs. 200. Total එක Rs. 200. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK029. විනාඩි 10-15 කින් shop එකට ඇවිත් ගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0765551112"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_034",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi bro, can I get a chicken fried rice full portion and 10 pieces of string hoppers?", "translation": "Hi bro, can I get a chicken fried rice full portion and 10 pieces of string hoppers?"},
+      {"role": "assistant", "content": "Sure thing! Great combo for pickup. Can you give me your mobile number?"},
+      {"role": "user", "content": "Yeah, 0718887776.", "translation": "Yeah, 0718887776."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Chicken Fried Rice (Rs. 370) + 1x String Hoppers 10pcs (Rs. 120). Total is Rs. 490. Ready to confirm?"},
+      {"role": "user", "content": "Yes, please confirm it.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "All done! Your order number is #WK030. Come to the shop to pick it up in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "10pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0718887776"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 490
+    }
+  },
+  {
+    "id": "conv_035",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට කුකුළු මස් කෑම​ (chicken rice & curry) එකක් අවශ්‍යයි.", "translation": "Hello, I need one chicken rice & curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! චිකන් කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0773451234.", "translation": "My phone number is 0773451234."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x චිකන් කෑම​ - රුපියල් 220. මුළු මුදල රුපියල් 220 කි. මෙම ඇණවුම ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර එය ස්ථිර කරන්න.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "ඇණවුම ස්ථිරයි. ඔබගේ ඇණවුම් අංකය #WK031. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0773451234"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_036",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, මාළු කොත්තු තියෙනවද?", "translation": "Machan, is there fish kottu?"},
+      {"role": "assistant", "content": "ඔව් මචං, බාගෙද full ද ඕනේ? Quantity එකත් කියපන්."},
+      {"role": "user", "content": "මාළු කොත්තු බාගයක් දාපන් එකක්.", "translation": "Put one half fish kottu."},
+      {"role": "assistant", "content": "එල. Phone number එක කියපන් මචං."},
+      {"role": "user", "content": "0706669994", "translation": "0706669994"},
+      {"role": "assistant", "content": "හරි, 1x මාළු කොත්තු (බාගෙ) - රු. 220. මුළු ගණන රු. 220. Order එක confirm ද?"},
+      {"role": "user", "content": "අයියෝ එපා මචං, යාළුවා වෙන තැනකින් අරන්, cancel කරපන්.", "translation": "Aiyo no machan, friend bought from somewhere else, cancel it."},
+      {"role": "assistant", "content": "හරි මචං, කිසි අවුලක් නැහැ, cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0706669994"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_037",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට rice & curry එකක් order කරන්න ඕනේ.", "translation": "Hi, I want to order a rice & curry."},
+      {"role": "assistant", "content": "හරි, Rice & Curry එකට මොන වගේ protein එකක්ද ඕනේ? Veg, egg, omelette, fish, chicken තියෙනවා."},
+      {"role": "user", "content": "Fish එක්ක දාන්න.", "translation": "Put it with fish."},
+      {"role": "assistant", "content": "Ok, 1x Fish Rice & Curry. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0751234561", "translation": "0751234561"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Fish Rice & Curry - Rs. 200. Total එක Rs. 200. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK032. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0751234561"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_038",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, do you guys have egg fried rice?", "translation": "Hey bro, do you guys have egg fried rice?"},
+      {"role": "assistant", "content": "Yes, we do! Half portion is Rs. 160 and full portion is Rs. 280. What can I get you?"},
+      {"role": "user", "content": "Give me 4 full portions of egg fried rice for my group, machang.", "translation": "Give me 4 full portions of egg fried rice for my group, machang."},
+      {"role": "assistant", "content": "Excellent, 4x Full Egg Fried Rice. Please provide your phone number to complete the order."},
+      {"role": "user", "content": "Here is it: 0775558883.", "translation": "Here is it: 0775558883."},
+      {"role": "assistant", "content": "Thanks. Order summary: 4x Full Egg Fried Rice - Rs. 1120. Total amount is Rs. 1120. Can I confirm this?"},
+      {"role": "user", "content": "Yes, please confirm.", "translation": "Yes, please confirm."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK033. It will be ready for pickup in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "4"},
+        {"type": "phone_number", "value": "0775558883"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1120
+    }
+  },
+  {
+    "id": "conv_039",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඔම්ලට් කෑම​ (Omelette Rice & Curry) එකක් අවශ්‍යයි.", "translation": "Hello, I need one Omelette Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඔම්ලට් කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ ජංගම දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0719998884.", "translation": "My number is 0719998884."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඔම්ලට් කෑම​ - රුපියල් 180. මුළු මුදල රුපියල් 180 කි. මෙම ඇණවුම ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම ස්ථිරයි. ඔබගේ ඇණවුම් අංකය #WK034. විනාඩි 10-15 කින් අපගේ කඩෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0719998884"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_040",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, ඉදිආප්ප 20 කෑල්ලේ පැකේජ් එකක් දාපන්.", "translation": "Machan, put one 20 piece string hopper package."},
+      {"role": "assistant", "content": "හරි මචං, ඉදිආප්ප 20ක්. Phone number එක කියන්න."},
+      {"role": "user", "content": "0725556661", "translation": "0725556661"},
+      {"role": "assistant", "content": "එල. 1x ඉදිආප්ප (20pcs) - රු. 240. මුළු ගණන රු. 240. Confirm ද?"},
+      {"role": "user", "content": "ඔව්, confirm.", "translation": "Yes, confirm."},
+      {"role": "assistant", "content": "නියමයි. Order number එක #WK035. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "20pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0725556661"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 240
+    }
+  },
+  {
+    "id": "conv_041",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට chicken fried rice එකක් ගන්න ඕනේ.", "translation": "Hi, I want to get a chicken fried rice."},
+      {"role": "assistant", "content": "හරි, chicken fried rice එක half ද ඕනේ full ප්‍රමාණයද? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Half portion එකක් ඇති මචං.", "translation": "A half portion is enough machan."},
+      {"role": "assistant", "content": "Ok, 1x Half Chicken Fried Rice. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0763332221", "translation": "0763332221"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Half Chicken Fried Rice - Rs. 200. Total එක Rs. 200. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK036. විනාඩි 10-15 කින් shop එකට ඇවිත් ගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0763332221"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_042",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, can I get fish fried rice half portion?", "translation": "Hey bro, can I get fish fried rice half portion?"},
+      {"role": "assistant", "content": "Sure machang! 1x Half Fish Fried Rice. Can you share your mobile number?"},
+      {"role": "user", "content": "My number is 0713334445.", "translation": "My number is 0713334445."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Half Fish Fried Rice - Rs. 210. Total is Rs. 210. Can I confirm this for shop pickup?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK037. It will be ready in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0713334445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 210
+    }
+  },
+  {
+    "id": "conv_043",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර කොත්තු (Egg Kottu) එකක් ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I need to order one Egg Kottu."},
+      {"role": "assistant", "content": "ආයුබෝවන්! බිත්තර කොත්තු එක බාගයක්ද ෆුල් (full) ප්‍රමාණයක්ද අවශ්‍ය?"},
+      {"role": "user", "content": "මට ෆුල් (full) ප්‍රමාණයේ එකක් ලබා දෙන්න.", "translation": "Please give me one full portion."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ ජංගම දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0774445556.", "translation": "My number is 0774445556."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර කොත්තු (Full) - රුපියල් 280. මුළු මුදල රුපියල් 280 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK038. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0774445556"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 280
+    }
+  },
+  {
+    "id": "conv_044",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, ඉදිආප්ප 15 කෑල්ලේ පැකේජ් එකකුයි, බිත්තර කෑම​ එකකුයි දාපන්.", "translation": "Machan, put one 15 piece string hopper package and one egg rice & curry."},
+      {"role": "assistant", "content": "එලම කෑම දෙකක්. Order එක ලියාගන්න phone number එක කියපන් බං."},
+      {"role": "user", "content": "අංකය 0751114445.", "translation": "The number is 0751114445."},
+      {"role": "assistant", "content": "හරි. 1x ඉදිආප්ප (15pcs) (රු. 180) + 1x බිත්තර කෑම​ (රු. 170). මුළු එකතුව රු. 350. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, confirm.", "translation": "Yes dude, confirm."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK039. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0751114445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 350
+    }
+  },
+  {
+    "id": "conv_045",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට rice & curry එකක් ඕනේ.", "translation": "Hi, I want a rice & curry."},
+      {"role": "assistant", "content": "Hi! Rice & Curry එකට මොන protein එකද ඕනේ? Veg, egg, omelette, fish, chicken තියෙනවා."},
+      {"role": "user", "content": "Chicken එක්ක දාන්න.", "translation": "Put it with chicken."},
+      {"role": "assistant", "content": "හරි, 1x Chicken Rice & Curry. Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0787776665", "translation": "0787776665"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Chicken Rice & Curry - Rs. 220. Total එක Rs. 220. Confirm කරනවාද?"},
+      {"role": "user", "content": "Aiyo, මට මේක එපා උනා, cancel කරන්න.", "translation": "Aiyo, I don't want this anymore, cancel it."},
+      {"role": "assistant", "content": "No problem, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0787776665"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_046",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, can I get a full portion of fish kottu for pickup?", "translation": "Hi, can I get a full portion of fish kottu for pickup?"},
+      {"role": "assistant", "content": "Yes, sure! 1x Full Fish Kottu. Please share your phone number."},
+      {"role": "user", "content": "My number is 0721112223.", "translation": "My number is 0721112223."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Fish Kottu - Rs. 400. Total is Rs. 400. Shall I confirm this?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK040. It will be ready in 10-15 minutes at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0721112223"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 400
+    }
+  },
+  {
+    "id": "conv_047",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට එළවළු කෑම​ (Veg Rice & Curry) එකක් අවශ්‍යයි.", "translation": "Hello, I need one Vegetable Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! එළවළු කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0701112223.", "translation": "My number is 0701112223."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x එළවළු කෑම​ - රුපියල් 150. මුළු මුදල රුපියල් 150 කි. මෙය ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම ස්ථිරයි. ඔබගේ ඇණවුම් අංකය #WK041. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "veg", "sinhala": "එළවළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0701112223"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 150
+    }
+  },
+  {
+    "id": "conv_048",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් ෆ්‍රයිඩ් රයිස් තියෙනවද?", "translation": "Machan, is there chicken fried rice?"},
+      {"role": "assistant", "content": "ඔව් මචං තියෙනවා. Half එකද full එකද ඕනේ? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Full එකක් දාපන් මචං.", "translation": "Put one full one machan."},
+      {"role": "assistant", "content": "එල. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0715554443", "translation": "0715554443"},
+      {"role": "assistant", "content": "හරි, 1x චිකන් ෆ්‍රයිඩ් රයිස් (Full) - රු. 370. මුළු එකතුව රු. 370. Okay ද?"},
+      {"role": "user", "content": "Okay මචං, confirm කරන්න.", "translation": "Okay machan, confirm it."},
+      {"role": "assistant", "content": "නියමයි බං. Order number එක #WK042. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0715554443"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 370
+    }
+  },
+  {
+    "id": "conv_049",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 30 කෑල්ලේ පැකේජ් 2ක් ඕනේ.", "translation": "Hi, I need 2 packages of 30 piece string hoppers."},
+      {"role": "assistant", "content": "හරි, 2x String Hoppers (30pcs). Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0772223335", "translation": "0772223335"},
+      {"role": "assistant", "content": "Thank you. Order summary: 2x String Hoppers (30pcs) - Rs. 720 (Rs. 360 each). Total එක Rs. 720. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න මචං.", "translation": "Yes, confirm it machan."},
+      {"role": "assistant", "content": "Done! Order number එක #WK043. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "2"},
+        {"type": "phone_number", "value": "0772223335"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 720
+    }
+  },
+  {
+    "id": "conv_050",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Bro, what are the types of kottu available today?", "translation": "Bro, what are the types of kottu available today?"},
+      {"role": "assistant", "content": "We have Chicken, Egg, and Fish Kottu machang. Both half and full portions are available."},
+      {"role": "user", "content": "Give me one half portion of chicken kottu.", "translation": "Give me one half portion of chicken kottu."},
+      {"role": "assistant", "content": "Got it, 1x Half Chicken Kottu. Can you share your mobile number?"},
+      {"role": "user", "content": "Sure, it's 0764445556.", "translation": "Sure, it's 0764445556."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Half Chicken Kottu - Rs. 200. Total is Rs. 200. Confirming this order?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "Excellent! Your order number is #WK044. Ready for pickup at the shop in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["menu_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0764445556"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_051",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට මාළු කෑම​ (Fish Rice & Curry) එකක් ලබා දෙන්න.", "translation": "Hello, please give me one Fish Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! මාළු කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0718889991.", "translation": "My phone number is 0718889991."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x මාළු කෑම​ - රුපියල් 200. මුළු මුදල රුපියල් 200 කි. මෙය ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK045. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0718889991"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_052",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, මාළු ෆ්‍රයිඩ් රයිස් full එකක් දාන්න.", "translation": "Machan, put one full fish fried rice."},
+      {"role": "assistant", "content": "හරි මචං, 1x Full Fish Fried Rice. Phone number එක කියපන් බං."},
+      {"role": "user", "content": "0724445557", "translation": "0724445557"},
+      {"role": "assistant", "content": "එල. 1x Full Fish Fried Rice - රු. 390. මුළු ගණන රු. 390. Confirm කරනවද?"},
+      {"role": "user", "content": "අයියෝ මට සල්ලි ප්‍රශ්නයක්, cancel කරපන් මචං.", "translation": "Aiyo I have a money issue, cancel it machan."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0724445557"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 390
+    }
+  },
+  {
+    "id": "conv_053",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට බිත්තර කොත්තු half ඒවා 3ක් ඕනේ.", "translation": "Hi, I need 3 half egg kottus."},
+      {"role": "assistant", "content": "හරි, 3x Half Egg Kottu. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0775556667", "translation": "0775556667"},
+      {"role": "assistant", "content": "Thank you. Order summary: 3x Half Egg Kottu - Rs. 480 (Rs. 160 each). Total එක Rs. 480. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! Order number එක #WK046. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0775556667"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 480
+    }
+  },
+  {
+    "id": "conv_054",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, can I get a group order of 5 chicken rice & curries?", "translation": "Hey bro, can I get a group order of 5 chicken rice & curries?"},
+      {"role": "assistant", "content": "Wow, 5 chicken rice & curries, sure thing! Please give your mobile number for confirmation."},
+      {"role": "user", "content": "My number is 0756667778.", "translation": "My number is 0756667778."},
+      {"role": "assistant", "content": "Thanks. Order summary: 5x Chicken Rice & Curry - Rs. 1100 (Rs. 220 each). Total is Rs. 1100. Okay to confirm for shop pickup?"},
+      {"role": "user", "content": "Yes machang, confirm it.", "translation": "Yes machang, confirm it."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK047. It will be ready in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "5"},
+        {"type": "phone_number", "value": "0756667778"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1100
+    }
+  },
+  {
+    "id": "conv_055",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඉදිආප්ප ගෙඩි 15 පැකේජ් එකක් අවශ්‍යයි.", "translation": "Hello, I need a 15 piece string hopper package."},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඉදිආප්ප ගෙඩි 15 පැකේජ් එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0782221114.", "translation": "My phone number is 0782221114."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඉදිආප්ප (15pcs) - රුපියල් 180. මුළු මුදල රුපියල් 180 කි. මෙම ඇණවුම ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර එය ස්ථිර කරන්න.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK048. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0782221114"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_056",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, බිත්තර ෆ්‍රයිඩ් රයිස් full එකක් තියෙනවද?", "translation": "Machan, is there a full egg fried rice?"},
+      {"role": "assistant", "content": "ඔව් බං තියෙනවා. එකක්ද ඕනේ?"},
+      {"role": "user", "content": "ඔව්, එකක් දාපන් මචං.", "translation": "Yes, put one machan."},
+      {"role": "assistant", "content": "එල. Phone number එක කියපන් බං."},
+      {"role": "user", "content": "0714449992", "translation": "0714449992"},
+      {"role": "assistant", "content": "හරි, 1x බිත්තර ෆ්‍රයිඩ් රයිස් (Full) - රු. 280. මුළු ගණන රු. 280. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, confirm.", "translation": "Yes dude, confirm."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK049. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0714449992"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 280
+    }
+  },
+  {
+    "id": "conv_057",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට rice & curry එකක් ඕනේ.", "translation": "Hi, I want a rice & curry."},
+      {"role": "assistant", "content": "Hi! Rice & Curry එකට මොන protein එකද ඕනේ? Veg, egg, omelette, fish, chicken තියෙනවා."},
+      {"role": "user", "content": "Omelette එක්ක දාන්න.", "translation": "Put it with an omelette."},
+      {"role": "assistant", "content": "හරි, 1x Omelette Rice & Curry. Please share your phone number."},
+      {"role": "user", "content": "0769998881", "translation": "0769998881"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Omelette Rice & Curry - Rs. 180. Total එක Rs. 180. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! Order number එක #WK050. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "protein_select", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0769998881"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_058",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey machang, can I order multiple items like one half chicken fried rice and 20 pieces of string hoppers?", "translation": "Hey machang, can I order multiple items like one half chicken fried rice and 20 pieces of string hoppers?"},
+      {"role": "assistant", "content": "Yes, absolutely! Let's get that done. Please share your mobile number."},
+      {"role": "user", "content": "Sure, it's 0704443332.", "translation": "Sure, it's 0704443332."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Half Chicken Fried Rice (Rs. 200) + 1x String Hoppers 20pcs (Rs. 240). Total is Rs. 440. Can I confirm this?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "All set! Your order number is #WK051. You can pick it up in 10-15 minutes from the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "20pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0704443332"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 440
+    }
+  },
+  {
+    "id": "conv_059",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර කෑම​ (Egg Rice & Curry) එකක් ඇණවුම් කළ හැකිද?", "translation": "Hello, can I order one Egg Rice & Curry?"},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඔව් පුලුවන්. කරුණාකර ඔබගේ දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0771231235.", "translation": "My phone number is 0771231235."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර කෑම​ - රුපියල් 170. මුළු මුදල රුපියල් 170 කි. මෙම ඇණවුම ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK052. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0771231235"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 170
+    }
+  },
+  {
+    "id": "conv_060",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් කොත්තු full එකක් ඕනේ.", "translation": "Machan, I need one full chicken kottu."},
+      {"role": "assistant", "content": "හරි මචං, 1x Full Chicken Kottu. Phone number එක දාපන් බං."},
+      {"role": "user", "content": "0711223344", "translation": "0711223344"}],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0711223344"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 380
+    }
+  },
+  {
+    "id": "conv_061",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "assistant", "content": "හරි මචං. 1x Full Chicken Kottu - රු. 380. මුළු ගණන රු. 380. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, confirm.", "translation": "Yes dude, confirm."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK053. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["confirm_order"],
+      "entities": [],
+      "order_confirmed": true,
+      "total_lkr": 380
+    }
+  },
+  {
+    "id": "conv_062",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට fish kottu half එකක් ඕනේ.", "translation": "Hi, I need a half fish kottu."},
+      {"role": "assistant", "content": "හරි, 1x Half Fish Kottu. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0768887776", "translation": "0768887776"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Half Fish Kottu - Rs. 220. Total එක Rs. 220. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK054. විනාඩි 10-15 කින් shop එකට ඇවිත් ගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0768887776"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_063",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Aiyo, I'm starving. Can I get a full portion of chicken fried rice?", "translation": "Aiyo, I'm starving. Can I get a full portion of chicken fried rice?"},
+      {"role": "assistant", "content": "Sure machang! 1x Full Chicken Fried Rice. Please share your mobile number."},
+      {"role": "user", "content": "Here you go: 0753334445.", "translation": "Here you go: 0753334445."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Chicken Fried Rice - Rs. 370. Total is Rs. 370. Shall I confirm this for shop pickup?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK055. It will be ready in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0753334445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 370
+    }
+  },
+  {
+    "id": "conv_064",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඉදිආප්ප ගෙඩි 10 පැකේජ් එකක් අවශ්‍යයි.", "translation": "Hello, I need a 10 piece string hopper package."},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඉදිආප්ප ගෙඩි 10 පැකේජ් එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0725556667.", "translation": "My number is 0725556667."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඉදිආප්ප (10pcs) - රුපියල් 120. මුළු මුදල රුපියල් 120 කි. මෙය ස්ථිර කරමුද?"},
+      {"role": "user", "content": "අයියෝ එපා, මගේ අදහස වෙනස් වුණා. කරුණාකර අවලංගු (cancel) කරන්න.", "translation": "Aiyo no, I changed my mind. Please cancel it."},
+      {"role": "assistant", "content": "පැහැදිලියි, ඇණවුම අවලංගු කළා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "10pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0725556667"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 120
+    }
+  },
+  {
+    "id": "conv_065",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, එළවළු කෑම​ (Veg Rice & Curry) එකක් දාන්න.", "translation": "Machan, put one Vegetable Rice & Curry."},
+      {"role": "assistant", "content": "හරි මචං, 1x Veg Rice & Curry. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0702223334", "translation": "0702223334."},
+      {"role": "assistant", "content": "එල. 1x Veg Rice & Curry - රු. 150. මුළු ගණන රු. 150. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, confirm කරන්න.", "translation": "Yes dude, confirm it."},
+      {"role": "assistant", "content": "නියමයි. Order number එක #WK056. විනාඩි 10-15 කින් ඇවිත් කඩෙන් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "veg", "sinhala": "එළවළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0702223334"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 150
+    }
+  },
+  {
+    "id": "conv_066",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට group එකකට chicken kottu half ඒවා 4ක් ඕනේ.", "translation": "Hi, I need 4 half chicken kottus for a group."},
+      {"role": "assistant", "content": "හරි, 4x Half Chicken Kottu. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0773334442", "translation": "0773334442"},
+      {"role": "assistant", "content": "Thank you. Order summary: 4x Half Chicken Kottu - Rs. 800 (Rs. 200 each). Total එක Rs. 800. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න මචං.", "translation": "Yes, confirm it machan."},
+      {"role": "assistant", "content": "Done! Order number එක #WK057. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "4"},
+        {"type": "phone_number", "value": "0773334442"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 800
+    }
+  },
+  {
+    "id": "conv_067",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, do you have fish fried rice today?", "translation": "Hey bro, do you have fish fried rice today?"},
+      {"role": "assistant", "content": "Yes machang, we have it! Half portion is Rs. 210 and full portion is Rs. 390. What do you need?"},
+      {"role": "user", "content": "Give me one full portion of fish fried rice.", "translation": "Give me one full portion of fish fried rice."},
+      {"role": "assistant", "content": "Got it, 1x Full Fish Fried Rice. Please provide your phone number."},
+      {"role": "user", "content": "It's 0716665554.", "translation": "It's 0716665554."},
+      {"role": "assistant", "content": "Thanks! Order summary: 1x Full Fish Fried Rice - Rs. 390. Total is Rs. 390. Ready to confirm?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK058. Ready in 10-15 minutes for shop pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0716665554"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 390
+    }
+  },
+  {
+    "id": "conv_068",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට චිකන් කෑම​ (Chicken Rice & Curry) එකක් ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I need to order one Chicken Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! චිකන් කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0785554443.", "translation": "My phone number is 0785554443."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x චිකන් කෑම​ - රුපියල් 220. මුළු මුදල රුපියල් 220 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර එය ස්ථිර කරන්න.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK059. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0785554443"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_069",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, බිත්තර කොත්තු බාගයක් දාපන්.", "translation": "Machan, put a half egg kottu."},
+      {"role": "assistant", "content": "හරි මචං, 1x Half Egg Kottu. Phone number එක කියපන් බං."},
+      {"role": "user", "content": "0729998887", "translation": "0729998887"},
+      {"role": "assistant", "content": "එල. 1x Half Egg Kottu - රු. 160. මුළු ගණන රු. 160. Confirm ද?"},
+      {"role": "user", "content": "ඔව් බං, ok.", "translation": "Yes dude, ok."},
+      {"role": "assistant", "content": "නියමයි. Order number එක #WK060. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0729998887"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 160
+    }
+  },
+  {
+    "id": "conv_070",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 20 කෑල්ලේ පැකේජ් එකක් ඕනේ.", "translation": "Hi, I need a 20 piece string hopper package."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (20pcs). Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0762221113", "translation": "0762221113"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (20pcs) - Rs. 240. Total එක Rs. 240. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK061. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "20pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0762221113"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 240
+    }
+  },
+  {
+    "id": "conv_071",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey machang, can I get one omelette rice & curry and one full egg fried rice?", "translation": "Hey machang, can I get one omelette rice & curry and one full egg fried rice?"},
+      {"role": "assistant", "content": "Sure! Great multi-item pick. Can you share your mobile number?"},
+      {"role": "user", "content": "Yes, 0707775554.", "translation": "Yes, 0707775554."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Omelette Rice & Curry (Rs. 180) + 1x Full Egg Fried Rice (Rs. 280). Total is Rs. 460. Ready to confirm?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "All set! Your order number is #WK062. It will be ready in 10-15 minutes for pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0707775554"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 460
+    }
+  },
+  {
+    "id": "conv_072",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර ෆ්‍රයිඩ් රයිස් (Egg Fried Rice) වල මිල ගණන් පවසන්න.", "translation": "Hello, tell me the prices of Egg Fried Rice."},
+      {"role": "assistant", "content": "ආයුබෝවන්! බිත්තර ෆ්‍රයිඩ් රයිස් බාගයක් රුපියල් 160ක් වන අතර ෆුල් (full) ප්‍රමාණයක් රුපියල් 280ක් වේ."},
+      {"role": "user", "content": "කරුණාකර මට බාගයේ (half) බිත්තර ෆ්‍රයිඩ් රයිස් එකක් ලබා දෙන්න.", "translation": "Please give me one half portion of egg fried rice."},
+      {"role": "assistant", "content": "පැහැදිලියි. ඔබගේ දුරකථන අංකය කරුණාකර අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0714443335.", "translation": "My number is 0714443335."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර ෆ්‍රයිඩ් රයිස් (Half) - රුපියල් 160. මුළු මුදල රුපියල් 160 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK063. විනාඩි 10-15 කින් පැමිණ ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0714443335"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 160
+    }
+  },
+  {
+    "id": "conv_073",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් ෆ්‍රයිඩ් රයිස් full එකක් දාපන්.", "translation": "Machan, put one full chicken fried rice."},
+      {"role": "assistant", "content": "හරි මචං, 1x Full Chicken Fried Rice. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0752223334", "translation": "0752223334"},
+      {"role": "assistant", "content": "එල. 1x Full Chicken Fried Rice - රු. 370. මුළු ගණන රු. 370. Confirm ද?"},
+      {"role": "user", "content": "අයියෝ මචං, මට එන්න විදිහක් නැහැ, cancel කරපන්.", "translation": "Aiyo machan, I have no way to come, cancel it."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0752223334"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 370
+    }
+  },
+  {
+    "id": "conv_074",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට බිත්තර කෑම​ (Egg Rice & Curry) එකක් ඕනේ.", "translation": "Hi, I want one Egg Rice & Curry."},
+      {"role": "assistant", "content": "හරි, 1x Egg Rice & Curry. Please share your phone number."},
+      {"role": "user", "content": "0778881112", "translation": "0778881112"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Egg Rice & Curry - Rs. 170. Total එක Rs. 170. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK064. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0778881112"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 170
+    }
+  },
+  {
+    "id": "conv_075",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Bro, I want to order 3 full portions of chicken kottu for pickup.", "translation": "Bro, I want to order 3 full portions of chicken kottu for pickup."},
+      {"role": "assistant", "content": "Awesome, 3x Full Chicken Kottu. Can you share your mobile number to proceed?"},
+      {"role": "user", "content": "Yes, it is 0761112223.", "translation": "Yes, it is 0761112223."},
+      {"role": "assistant", "content": "Thanks. Order summary: 3x Full Chicken Kottu - Rs. 1140 (Rs. 380 each). Total is Rs. 1140. Confirming this order?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Perfect! Your order number is #WK065. It will be ready in 10-15 minutes at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0761112223"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1140
+    }
+  },
+  {
+    "id": "conv_076",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඉදිආප්ප ගෙඩි 30 පැකේජ් එකක් ලබා දෙන්න.", "translation": "Hello, please give me a 30 piece string hopper package."},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඉදිආප්ප ගෙඩි 30 පැකේජ් එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0781119992.", "translation": "My phone number is 0781119992."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඉදිආප්ප (30pcs) - රුපියල් 360. මුළු මුදල රුපියල් 360 කි. මෙය ස්ථිර කිරීමට කැමතිද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර ස්ථිර කරන්න.", "translation": "Yes, please confirm."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකව ලියාපදිංචි කළා. ඔබගේ ඇණවුම් අංකය #WK066. විනාඩි 10-15 කින් පැමිණ ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0781119992"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 360
+    }
+  },
+  {
+    "id": "conv_077",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, මාළු කෑම​ (Fish Rice & Curry) එකක් දාපන්.", "translation": "Machan, put one Fish Rice & Curry."},
+      {"role": "assistant", "content": "හරි මචං, 1x Fish Rice & Curry. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0712224445", "translation": "0712224445"},
+      {"role": "assistant", "content": "එල. 1x Fish Rice & Curry - රු. 200. මුළු ගණන රු. 200. Confirm ද?"},
+      {"role": "user", "content": "ඔව්, confirm.", "translation": "Yes, confirm."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK067. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0712224445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_078",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට මාළු කොත්තු (Fish Kottu) එකක් ඕනේ.", "translation": "Hi, I need one Fish Kottu."},
+      {"role": "assistant", "content": "හරි, fish kottu එක half portion ද ඕනේ full portion ද? Quantity එකත් කියන්න."},
+      {"role": "user", "content": "Full portion එකක් දාන්න.", "translation": "Put one full portion."},
+      {"role": "assistant", "content": "Ok, 1x Full Fish Kottu. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0765554443", "translation": "0765554443"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Full Fish Kottu - Rs. 400. Total එක Rs. 400. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK068. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0765554443"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 400
+    }
+  },
+  {
+    "id": "conv_079",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, can I get a full portion of chicken fried rice and a half portion of egg kottu?", "translation": "Hey bro, can I get a full portion of chicken fried rice and a half portion of egg kottu?"},
+      {"role": "assistant", "content": "Sure thing! Great multi-item order. Please share your phone number to proceed."},
+      {"role": "user", "content": "My number is 0705553332.", "translation": "My number is 0705553332."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Chicken Fried Rice (Rs. 370) + 1x Half Egg Kottu (Rs. 160). Total is Rs. 530. Can I confirm this for shop pickup?"},
+      {"role": "user", "content": "Yes, confirm it machang.", "translation": "Yes, confirm it machang."},
+      {"role": "assistant", "content": "All done! Your order number is #WK069. It will be ready in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0705553332"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 530
+    }
+  },
+  {
+    "id": "conv_080",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට ඔම්ලට් කෑම​ (Omelette Rice & Curry) එකක් අවශ්‍යයි.", "translation": "Hello, I need one Omelette Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඔම්ලට් කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0724449991.", "translation": "My number is 0724449991."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x ඔම්ලට් කෑම​ - රුපියල් 180. මුළු මුදල රුපියල් 180 කි. මෙම ඇණවුම ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK070. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0724449991"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_081",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් ෆ්‍රයිඩ් රයිස් බාගයක් තියෙනවද?", "translation": "Machan, is there a half chicken fried rice?"},
+      {"role": "assistant", "content": "ඔව් මචං තියෙනවා. එකක්ද ඕනේ?"},
+      {"role": "user", "content": "ඔව්, එකක් දාපන් බං.", "translation": "Yes, put one dude."},
+      {"role": "assistant", "content": "එල. Phone number එක කියපන් මචං."},
+      {"role": "user", "content": "0771114445", "translation": "0771114445"},
+      {"role": "assistant", "content": "හරි, 1x චිකන් ෆ්‍රයිඩ් රයිස් (බාගෙ) - රු. 200. මුළු එකතුව රු. 200. Okay ද?"},
+      {"role": "user", "content": "අයියෝ එපා මචං, cancel කරපන්, යාළුවා කෑම ගෙනල්ලා.", "translation": "Aiyo no machan, cancel it, friend brought food."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["availability_inquiry", "food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0771114445"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_082",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 15 කෑල්ලේ පැකේජ් එකක් ඕනේ.", "translation": "Hi, I need a 15 piece string hopper package."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (15pcs). Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0769992221", "translation": "0769992221"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (15pcs) - Rs. 180. Total එක Rs. 180. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK071. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0769992221"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_083",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi bro, what are the prices for string hoppers packages?", "translation": "Hi bro, what are the prices for string hoppers packages?"},
+      {"role": "assistant", "content": "We have 10pcs for Rs. 120, 15pcs for Rs. 180, 20pcs for Rs. 240, and 30pcs for Rs. 360 machang. Which one do you want?"},
+      {"role": "user", "content": "Give me two packages of 20 pieces for my roomies.", "translation": "Give me two packages of 20 pieces for my roomies."},
+      {"role": "assistant", "content": "Got it, 2x 20pcs packages. Please share your phone number."},
+      {"role": "user", "content": "It's 0714445556.", "translation": "It's 0714445556."},
+      {"role": "assistant", "content": "Thanks. Order summary: 2x String Hoppers (20pcs) - Rs. 480 (Rs. 240 each). Total is Rs. 480. Confirming this?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK072. Ready for shop pickup in 10-15 minutes."}
+    ],
+    "labels": {
+      "intent_sequence": ["price_inquiry", "food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "20pcs"},
+        {"type": "quantity", "value": "2"},
+        {"type": "phone_number", "value": "0714445556"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 480
+    }
+  },
+  {
+    "id": "conv_084",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට එළවළු කෑම​ (Veg Rice & Curry) එකක් ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I need to order one Vegetable Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! එළවළු කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ ජංගම දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0702221113.", "translation": "My number is 0702221113."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x එළවළු කෑම​ - රුපියල් 150. මුළු මුදල රුපියල් 150 කි. මෙම ඇණවුම ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, එය ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK073. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "veg", "sinhala": "එළවළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0702221113"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 150
+    }
+  },
+  {
+    "id": "conv_085",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, බිත්තර කොත්තු full එකක් දාපන්.", "translation": "Machan, put one full egg kottu."},
+      {"role": "assistant", "content": "හරි මචං, 1x Full Egg Kottu. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0718882223", "translation": "0718882223"},
+      {"role": "assistant", "content": "එල. 1x Full Egg Kottu - රු. 280. මුළු ගණන රු. 280. Confirm ද?"},
+      {"role": "user", "content": "ඔව්, confirm.", "translation": "Yes, confirm."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK074. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0718882223"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 280
+    }
+  },
+  {
+    "id": "conv_086",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට fish fried rice half එකක් ඕනේ.", "translation": "Hi, I need a half fish fried rice."},
+      {"role": "assistant", "content": "හරි, 1x Half Fish Fried Rice. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0763339994", "translation": "0763339994"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Half Fish Fried Rice - Rs. 210. Total එක Rs. 210. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK075. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Fried Rice"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0763339994"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 210
+    }
+  },
+  {
+    "id": "conv_087",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, I want to order 4 portions of chicken fried rice for pickup.", "translation": "Hey bro, I want to order 4 portions of chicken fried rice for pickup."},
+      {"role": "assistant", "content": "Sure machang! Do you want half or full portions for those 4?"},
+      {"role": "user", "content": "All full portions, bro.", "translation": "All full portions, bro."},
+      {"role": "assistant", "content": "Got it, 4x Full Chicken Fried Rice. Please share your mobile number."},
+      {"role": "user", "content": "Yes, 0758883332.", "translation": "Yes, 0758883332."},
+      {"role": "assistant", "content": "Thanks. Order summary: 4x Full Chicken Fried Rice - Rs. 1480 (Rs. 370 each). Total is Rs. 1480. Can I confirm this?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK076. It will be ready in 10-15 minutes at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "portion_inquiry", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "4"},
+        {"type": "phone_number", "value": "0758883332"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1480
+    }
+  },
+  {
+    "id": "conv_088",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට චිකන් කෑම​ (Chicken Rice & Curry) එකක් ඇණවුම් කිරීමට හැකිකමක් පවතීද?", "translation": "Hello, is it possible for me to order one Chicken Rice & Curry?"},
+      {"role": "assistant", "content": "ආයුබෝවන්! ඔව්, නිසැකවම පුලුවන්. කරුණාකර ඔබගේ දුරකථන අංකය අපට ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0783332221.", "translation": "My phone number is 0783332221."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x චිකන් කෑම​ - රුපියල් 220. මුළු මුදල රුපියල් 220 කි. මෙම ඇණවුම ස්ථිර කිරීමට ඔබ එකඟද?"},
+      {"role": "user", "content": "ඔව්, මම එකඟයි. ස්ථිර කරන්න.", "translation": "Yes, I agree. Confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකව සම්පූර්ණ කළා. ඔබගේ ඇණවුම් අංකය #WK077. විනාඩි 10-15 කින් පැමිණ ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0783332221"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_089",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, මාළු කොත්තු බාගයක් දාපන්.", "translation": "Machan, put a half fish kottu."},
+      {"role": "assistant", "content": "හරි මචං, 1x Half Fish Kottu. Phone number එක කියපන් බං."},
+      {"role": "user", "content": "0725554443", "translation": "0725554443"},
+      {"role": "assistant", "content": "එල. 1x Half Fish Kottu - රු. 220. මුළු ගණන රු. 220. Confirm ද?"},
+      {"role": "user", "content": "අයියෝ මචං, මට සල්ලි මදි, cancel කරපන්.", "translation": "Aiyo machan, I don't have enough money, cancel it."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0725554443"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 220
+    }
+  },
+  {
+    "id": "conv_090",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 10 කෑල්ලේ පැකේජ් එකක් ඕනේ.", "translation": "Hi, I need a 10 piece string hopper package."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (10pcs). Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0767776665", "translation": "0767776665"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (10pcs) - Rs. 120. Total එක Rs. 120. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK078. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "10pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0767776665"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 120
+    }
+  },
+  {
+    "id": "conv_091",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey machang, can I get one chicken kottu half portion and one 15 piece string hopper package?", "translation": "Hey machang, can I get one chicken kottu half portion and one 15 piece string hopper package?"},
+      {"role": "assistant", "content": "Sure! Great multi-item order. Please share your phone number to proceed."},
+      {"role": "user", "content": "My number is 0702223331.", "translation": "My number is 0702223331."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Half Chicken Kottu (Rs. 200) + 1x String Hoppers 15pcs (Rs. 180). Total is Rs. 380. Ready to confirm?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "All set! Your order number is #WK079. Ready in 10-15 minutes for pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "15pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0702223331"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 380
+    }
+  },
+  {
+    "id": "conv_092",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට බිත්තර කෑම​ (Egg Rice & Curry) එකක් අවශ්‍යයි.", "translation": "Hello, I need one Egg Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! බිත්තර කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0715554442.", "translation": "My number is 0715554442."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x බිත්තර කෑම​ - ਰුපියල් 170. මුළු මුදල රුපියල් 170 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK080. විනාඩි 10-15 කින් පැමිණ අපගේ කඩෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "egg", "sinhala": "බිත්තර"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0715554442"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 170
+    }
+  },
+  {
+    "id": "conv_093",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, චිකන් කොත්තු බාගයක් දාපන්.", "translation": "Machan, put a half chicken kottu."},
+      {"role": "assistant", "content": "හරි මචං, 1x Half Chicken Kottu. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0751112224", "translation": "0751112224"},
+      {"role": "assistant", "content": "එල. 1x Half Chicken Kottu - රු. 200. මුළු ගණන රු. 200. Confirm ද?"},
+      {"role": "user", "content": "ඔව්, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "නියමයි! Order number එක #WK081. විනාඩි 10-15 කින් ඇවිත් අරන් පලයන්."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Kottu"},
+        {"type": "portion", "value": "half"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0751112224"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_094",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට egg fried rice full එකක් ඕනේ.", "translation": "Hi, I need a full egg fried rice."},
+      {"role": "assistant", "content": "හරි, 1x Full Egg Fried Rice. Contact number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0762224445", "translation": "0762224445"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x Full Egg Fried Rice - Rs. 280. Total එක Rs. 280. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK082. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Egg Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0762224445"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 280
+    }
+  },
+  {
+    "id": "conv_095",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey bro, can I get a group order of 3 full fish kottus?", "translation": "Hey bro, can I get a group order of 3 full fish kottus?"},
+      {"role": "assistant", "content": "Sure machang! 3x Full Fish Kottu. Please share your phone number to proceed with the group order."},
+      {"role": "user", "content": "It's 0704445551.", "translation": "It's 0704445551."},
+      {"role": "assistant", "content": "Thanks. Order summary: 3x Full Fish Kottu - Rs. 1200 (Rs. 400 each). Total is Rs. 1200. Okay to confirm?"},
+      {"role": "user", "content": "Yes, confirm please.", "translation": "Yes, confirm please."},
+      {"role": "assistant", "content": "Awesome! Your order number is #WK083. Ready in 10-15 minutes for pickup at the shop."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Fish Kottu"},
+        {"type": "portion", "value": "full"},
+        {"type": "quantity", "value": "3"},
+        {"type": "phone_number", "value": "0704445551"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 1200
+    }
+  },
+  {
+    "id": "conv_096",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට මාළු කෑම​ (Fish Rice & Curry) එකක් ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I need to order one Fish Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! මාළු කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ දුරකථන අංකය 0786665554.", "translation": "My phone number is 0786665554."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x මාළු කෑම​ - ਰੁපියල් 200. මුළු මුදල රුපියල් 200 කි. මෙය ස්ථිර කිරීමට අවසරද?"},
+      {"role": "user", "content": "ඔව්, කරුණාකර එය ස්ථිර කරන්න.", "translation": "Yes, please confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK084. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "fish", "sinhala": "මාළු"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0786665554"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 200
+    }
+  },
+  {
+    "id": "conv_097",
+    "language": "informal_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "මචං, ඔම්ලට් කෑම​ (Omelette Rice & Curry) එකක් දාපන්.", "translation": "Machan, put one Omelette Rice & Curry."},
+      {"role": "assistant", "content": "හරි මචං, 1x Omelette Rice & Curry. Phone number එක කියන්න බං."},
+      {"role": "user", "content": "0714441112", "translation": "0714441112"},
+      {"role": "assistant", "content": "එල. 1x Olmelette Rice & Curry - රු. 180. මුළු ගණන රු. 180. Confirm ද?"},
+      {"role": "user", "content": "අයියෝ මචං, මට සල්ලි ප්‍රශ්නයක්, cancel කරපන්.", "translation": "Aiyo machan, I have a money issue, cancel it."},
+      {"role": "assistant", "content": "හරි මචං, order එක cancel කරා."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "cancel_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "omelette", "sinhala": "ඔම්ලට්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0714441112"}
+      ],
+      "order_confirmed": false,
+      "total_lkr": 180
+    }
+  },
+  {
+    "id": "conv_098",
+    "language": "sinhala_english_mixed",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hi, මට string hoppers 30 කෑල්ලේ පැකේජ් එකක් ඕනේ.", "translation": "Hi, I need a 30 piece string hopper package."},
+      {"role": "assistant", "content": "හරි, 1x String Hoppers (30pcs). Phone number එක දෙන්න පුලුවන්ද?"},
+      {"role": "user", "content": "0765559992", "translation": "0765559992"},
+      {"role": "assistant", "content": "Thank you. Order summary: 1x String Hoppers (30pcs) - Rs. 360. Total එක Rs. 360. Confirm කරනවාද?"},
+      {"role": "user", "content": "Yes, confirm කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "Done! ඔයාගේ order number එක #WK085. විනාඩි 10-15 කින් ඇවිත් pickup කරගන්න."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "30pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0765559992"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 360
+    }
+  },
+  {
+    "id": "conv_099",
+    "language": "english_with_sinhala",
+    "style": "informal",
+    "conversation": [
+      {"role": "user", "content": "Hey machang, can I order one chicken fried rice full portion and 10 pieces of string hoppers?", "translation": "Hey machang, can I order one chicken fried rice full portion and 10 pieces of string hoppers?"},
+      {"role": "assistant", "content": "Sure! Great multi-item order. Please share your phone number to proceed."},
+      {"role": "user", "content": "My number is 0706665554.", "translation": "My number is 0706665554."},
+      {"role": "assistant", "content": "Thanks. Order summary: 1x Full Chicken Fried Rice (Rs. 370) + 1x String Hoppers 10pcs (Rs. 120). Total is Rs. 490. Ready to confirm?"},
+      {"role": "user", "content": "Yes, confirm it bro.", "translation": "Yes, confirm it bro."},
+      {"role": "assistant", "content": "All set! Your order number is #WK086. It will be ready in 10-15 minutes for pickup."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Chicken Fried Rice"},
+        {"type": "portion", "value": "full"},
+        {"type": "food_item", "value": "String Hoppers"},
+        {"type": "package", "value": "10pcs"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0706665554"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 490
+    }
+  },
+  {
+    "id": "conv_100",
+    "language": "formal_sinhala",
+    "style": "formal",
+    "conversation": [
+      {"role": "user", "content": "ආයුබෝවන්, මට කුකුළු මස් කෑම​ (Chicken Rice & Curry) එකක් ඇණවුම් කිරීමට අවශ්‍යයි.", "translation": "Hello, I need to order one Chicken Rice & Curry."},
+      {"role": "assistant", "content": "ආයුබෝවන්! චිකන් කෑම​ එකක්, පැහැදිලියි. කරුණාකර ඔබගේ ජංගම දුරකථන අංකය ලබා දෙන්න."},
+      {"role": "user", "content": "මගේ අංකය 0713332221.", "translation": "My number is 0713332221."},
+      {"role": "assistant", "content": "ස්තූතියි. ඔබගේ ඇණවුම: 1x චිකන් කෑම​ -Rs 220. මුළු මුදල Rs 220. මෙම ඇණවුම ස්ථිර කරමුද?"},
+      {"role": "user", "content": "ඔව්, එය ස්ථිර කරන්න.", "translation": "Yes, confirm it."},
+      {"role": "assistant", "content": "ඇණවුම සාර්ථකයි. ඔබගේ ඇණවුම් අංකය #WK087. විනාඩි 10-15 කින් පැමිණ අප ආයතනයෙන් ලබාගත හැක."}
+    ],
+    "labels": {
+      "intent_sequence": ["food_order", "phone_provide", "confirm_order"],
+      "entities": [
+        {"type": "food_item", "value": "Rice & Curry"},
+        {"type": "protein", "value": "chicken", "sinhala": "චිකන්"},
+        {"type": "quantity", "value": "1"},
+        {"type": "phone_number", "value": "0713332221"}
+      ],
+      "order_confirmed": true,
+      "total_lkr": 220
+    }
+  }
+]

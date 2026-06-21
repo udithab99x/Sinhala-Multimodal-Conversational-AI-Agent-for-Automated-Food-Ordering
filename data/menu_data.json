@@ -1,0 +1,119 @@
+{
+  "restaurant": {
+    "name": "Wakwalle Kade",
+    "sinhala_name": "වක්වැල්ලේ කඩේ",
+    "phone": "+94 75 463 9283",
+    "address": "Hapugala, Wakwalle,Galle",
+    "delivery": false,
+    "pickup_only": true
+  },
+  "categories": [
+    {"id": "rice", "name": "Rice & Curry", "sinhala": "බත් සහ කරි"},
+    {"id": "string_hoppers", "name": "String Hoppers", "sinhala": "ඉදිආප්ප"},
+    {"id": "kottu", "name": "Kottu", "sinhala": "කොත්තු"},
+    {"id": "fried_rice", "name": "Fried Rice", "sinhala": "ෆ්‍රයිඩ් රයිස්"}
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Rice & Curry",
+      "sinhala": "බත් සහ කරි",
+      "category": "rice",
+      "available": true,
+      "description": "Rice with curry — choose one protein",
+      "options": [
+        {"protein": "veg", "sinhala": "එළවළු", "price_lkr": 250},
+        {"protein": "egg", "sinhala": "බිත්තර", "price_lkr": 290},
+        {"protein": "omelette", "sinhala": "ඔම්ලට්", "price_lkr": 320},
+        {"protein": "fish", "sinhala": "මාළු", "price_lkr": 350},
+        {"protein": "chicken", "sinhala": "චිකන්", "price_lkr": 400}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "String Hoppers",
+      "sinhala": "ඉදිආප්ප",
+      "category": "string_hoppers",
+      "available": true,
+      "description": "Sri Lankan rice flour string hoppers",
+      "packages": [
+        {"count": 10, "price_lkr": 150},
+        {"count": 15, "price_lkr": 225},
+        {"count": 20, "price_lkr": 300},
+        {"count": 30, "price_lkr": 450}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Chicken Kottu",
+      "sinhala": "චිකන් කොත්තු",
+      "category": "kottu",
+      "available": true,
+      "description": "Shredded roti stir-fried with chicken, vegetables and egg",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 450},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 800}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Egg Kottu",
+      "sinhala": "එග් කොත්තු",
+      "category": "kottu",
+      "available": true,
+      "description": "Shredded roti stir-fried with egg and vegetables",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 350},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 600}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Fish Kottu",
+      "sinhala": "ෆිෂ් කොත්තු",
+      "category": "kottu",
+      "available": true,
+      "description": "Shredded roti stir-fried with fish, vegetables and egg",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 420},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 750}
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Chicken Fried Rice",
+      "sinhala": "චිකන් ෆ්‍රයිඩ් රයිස්",
+      "category": "fried_rice",
+      "available": true,
+      "description": "Wok-fried rice with chicken, egg and vegetables",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 450},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 800}
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Egg Fried Rice",
+      "sinhala": "එග් ෆ්‍රයිඩ් රයිස්",
+      "category": "fried_rice",
+      "available": true,
+      "description": "Wok-fried rice with egg and vegetables",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 350},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 600}
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Fish Fried Rice",
+      "sinhala": "ෆිෂ් ෆ්‍රයිඩ් රයිස්",
+      "category": "fried_rice",
+      "available": true,
+      "description": "Wok-fried rice with fish, egg and vegetables",
+      "portions": [
+        {"size": "half", "sinhala": "හාෆ්", "price_lkr": 420},
+        {"size": "full", "sinhala": "ෆුල්", "price_lkr": 750}
+      ]
+    }
+  ]
+}
