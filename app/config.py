@@ -10,11 +10,13 @@ class Settings(BaseSettings):
     twilio_whatsapp_from: str = "whatsapp:+14155238886"
     twilio_voice_from: str = ""
 
-    # HuggingFace — the fine-tuned Gemma 4 model
+    # HuggingFace — base Gemma 4 E2B (prompt-engineered, no fine-tuned adapter)
     hf_token: str = ""
-    hf_model_id: str = "google/gemma-3-4b-it"   # swap to your fine-tuned ID after training
+    hf_model_id: str = "google/gemma-4-e2b-it"
 
-    # Google Cloud
+    # Google AI Studio API key (for Gemini TTS)
+    google_api_key: str = ""
+    # Legacy: Google Cloud service account path (unused if google_api_key is set)
     google_application_credentials: str = ""
 
     # App

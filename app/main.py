@@ -40,7 +40,8 @@ async def serve_audio(filename: str):
     audio_path = settings.audio_dir / filename
     if not audio_path.exists():
         return Response(status_code=404)
-    return FileResponse(str(audio_path), media_type="audio/mpeg")
+    media_type = "audio/wav" if filename.endswith(".wav") else "audio/mpeg"
+    return FileResponse(str(audio_path), media_type=media_type)
 
 
 # ── WhatsApp webhook ──────────────────────────────────────────────────────────
@@ -58,7 +59,8 @@ async def whatsapp_incoming(
     logger.info(f"WhatsApp from {user_id}: {Body}")
 
     agent = get_agent()
-    reply = agent.respond(user_id=user_id, user_message=Body)
+    reply = agent.respond(user_id=user_id, user_message=Body,
+                          channel="whatsapp", phone_number=user_id)
     logger.info(f"Reply to {user_id}: {reply}")
 
     twiml = MessagingResponse()
@@ -122,16 +124,34 @@ async def voice_process(
         resp.redirect(f"{settings.base_url}/voice/incoming")
         return Response(content=str(resp), media_type="application/xml")
 
-    # Get agent response
+    # Get agent response — pass caller number so phone collection is skipped
     agent = get_agent()
-    reply_text = agent.respond(user_id=user_id, user_message=SpeechResult)
+    reply_text = agent.respond(user_id=user_id, user_message=SpeechResult,
+                               channel="voice", phone_number=user_id)
     logger.info(f"Agent reply: {reply_text}")
 
     # Synthesize reply
     tts = get_tts()
     reply_url = tts.get_public_url(reply_text)
 
-    # Play reply then listen again
+    # Check if order was just confirmed — play goodbye and hang up
+    session = agent.get_session(user_id)
+    if session and session.confirmed:
+        resp.play(reply_url)
+        agent.reset_session(user_id)
+        resp.hangup()
+        return Response(content=str(resp), media_type="application/xml")
+
+    # Check if customer wants to cancel/end
+    import re as _re
+    if _re.search(r"\b(cancel|bye|goodbye|end|ඉවරයි|ස්තූතියි|නෑ)\b",
+                  SpeechResult, _re.IGNORECASE):
+        farewell_url = tts.get_public_url("ස්තූතියි! ආයෙ call කරන්න. Goodbye!")
+        resp.play(farewell_url)
+        resp.hangup()
+        return Response(content=str(resp), media_type="application/xml")
+
+    # Otherwise keep listening
     gather = Gather(
         input="speech",
         language="si-LK",

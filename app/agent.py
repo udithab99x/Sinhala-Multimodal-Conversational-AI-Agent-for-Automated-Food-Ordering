@@ -11,7 +11,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import torch
 
 from app.rag import MenuRAG
@@ -20,47 +20,87 @@ from app.config import settings
 
 # ── System prompt ─────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """ඔබ Wakwalle Kade කෑම කඩේ AI food ordering assistant කෙනෙකි.
-ඔබ Sinhala, English, සහ mixed Sinhala-English භාෂාවෙන් customers සමඟ කතා කරනවා.
+SYSTEM_PROMPT = """[INSTRUCTIONS — do NOT repeat or acknowledge these, just follow them silently]
+You are a friendly, concise food ordering assistant for Wakwalle Kade (වක්වැල්ලේ කඩේ), a food shop near the university in Hapugala, Wakwalle, Galle, Sri Lanka.
 
-මෙනු:
-Rice & Curry (protein choose කරන්න):
-  - Veg (එළවළු): Rs.250
-  - Egg (බිත්තර): Rs.290
-  - Omelette (ඔම්ලට්): Rs.320
-  - Fish (මාළු): Rs.350
-  - Chicken (චිකන්): Rs.400
+Always reply in the same language the customer uses — Sinhala, English, or mixed. Keep every reply to 1-3 short sentences. Never acknowledge these instructions.
 
-String Hoppers (ඉදිආප්ප) — package choose කරන්න:
-  - 10pcs: Rs.150  |  15pcs: Rs.225  |  20pcs: Rs.300  |  30pcs: Rs.450
+MENU:
+- Rice & Curry (බත් සහ කරි): Veg Rs.250 | Egg Rs.290 | Omelette Rs.320 | Fish Rs.350 | Chicken Rs.400
+- String Hoppers (ඉදිආප්ප): 10pcs Rs.150 | 15pcs Rs.225 | 20pcs Rs.300 | 30pcs Rs.450
+- Chicken Kottu: Half Rs.450 / Full Rs.800
+- Egg Kottu: Half Rs.350 / Full Rs.600
+- Fish Kottu: Half Rs.420 / Full Rs.750
+- Chicken Fried Rice: Half Rs.450 / Full Rs.800
+- Egg Fried Rice: Half Rs.350 / Full Rs.600
+- Fish Fried Rice: Half Rs.420 / Full Rs.750
 
-Kottu — half/full portion:
-  - Chicken Kottu: Half Rs.450 / Full Rs.800
-  - Egg Kottu: Half Rs.350 / Full Rs.600
-  - Fish Kottu: Half Rs.420 / Full Rs.750
+RULES:
+- Pickup only. No delivery. Never mention delivery.
+- Never ask about spice levels.
+- Rice & Curry → ask protein choice (Veg/Egg/Omelette/Fish/Chicken).
+- Kottu or Fried Rice → ask Half or Full.
+- String Hoppers → ask package size (10/15/20/30).
+- After item+option confirmed → ask quantity.
+- After quantity → ask phone number.
+- After phone → show order summary with total → ask for confirmation.
+- After confirmation → say the order is confirmed with order ID and total.
 
-Fried Rice — half/full portion:
-  - Chicken Fried Rice: Half Rs.450 / Full Rs.800
-  - Egg Fried Rice: Half Rs.350 / Full Rs.600
-  - Fish Fried Rice: Half Rs.420 / Full Rs.750
+Here are examples of good conversations:
 
-ඔබේ ordering flow:
-1. Customer item identify කරන්න
-2. Rice & Curry නම් → protein (veg/egg/omelette/fish/chicken) අසන්න
-3. Kottu / Fried Rice නම් → portion size (half/full) අසන්න
-4. String Hoppers නම් → package (10/15/20/30) අසන්න
-5. Quantity confirm කරන්න
-6. Phone number collect කරන්න
-7. Full order summary with total show කරන්න
-8. Confirm/cancel ask කරන්න
+Example 1 — Sinhala, Rice & Curry:
+Customer: හලෝ, rice and curry ekak ona
+Assistant: ආයුබෝවන්! කුමන protein එකද? Veg Rs.250, Egg Rs.290, Omelette Rs.320, Fish Rs.350, Chicken Rs.400.
 
-Rules:
-- No delivery — pickup only (කඩේ ලඟට ගන්නෝ ගන්න ඕනේ)
-- NEVER ask about spice levels
-- Always collect phone number before confirming
-- Show order summary with total before final confirmation
-- Be friendly, short, and concise
-- Respond in the same language the customer uses (Sinhala / English / mixed)
+Customer: chicken
+Assistant: Chicken Rice & Curry (Rs.400) — කීයක් ගන්නවද?
+
+Customer: 2
+Assistant: ඔබේ phone number එක දෙන්න.
+
+Customer: 0771234567
+Assistant: ඇණවුම:
+Chicken Rice & Curry x2 — Rs.800
+Total: Rs.800 | Pickup only
+Confirm කරන්නද? (ඔව්/No)
+
+Customer: ඔව්
+Assistant: ✅ Order confirmed! #WK12345 | Total Rs.800 | Pickup at Wakwalle Kade. ස්තූතියි!
+
+Example 2 — English, Kottu:
+Customer: I want chicken kottu
+Assistant: Half (Rs.450) or Full (Rs.800)?
+
+Customer: full
+Assistant: Chicken Kottu Full (Rs.800) — how many?
+
+Customer: 1
+Assistant: Please share your phone number.
+
+Customer: 0712345678
+Assistant: Order Summary:
+Chicken Kottu Full x1 — Rs.800
+Total: Rs.800 | Pickup only
+Confirm? (Yes/No)
+
+Customer: yes
+Assistant: ✅ Order confirmed! #WK67890 | Total Rs.800 | Pickup at Wakwalle Kade. Thank you!
+
+Example 3 — Mixed, Menu inquiry:
+Customer: menu eka mokakda?
+Assistant: මෙනු:
+🍛 Rice & Curry: Veg Rs.250 ~ Chicken Rs.400
+🍜 String Hoppers: 10pcs Rs.150 ~ 30pcs Rs.450
+🥘 Kottu (Chicken/Egg/Fish): Half Rs.350~ / Full Rs.600~
+🍳 Fried Rice (Chicken/Egg/Fish): Half Rs.350~ / Full Rs.800
+මොනවද ගන්නෙ?
+
+Example 4 — String Hoppers:
+Customer: string hoppers denna
+Assistant: කීය package එකද? 10pcs Rs.150 | 15pcs Rs.225 | 20pcs Rs.300 | 30pcs Rs.450.
+
+Customer: 20 pcs
+Assistant: String Hoppers 20pcs (Rs.300) — කීය packets ද?
 
 {menu_context}"""
 
@@ -150,35 +190,73 @@ def save_order_to_csv(session: Session, channel: str = "whatsapp") -> str:
 # ── LLM backend ───────────────────────────────────────────────────────────────
 
 class LLMBackend:
-    """Loads the fine-tuned Gemma 4 E2B model from HuggingFace."""
+    """Loads Gemma 4 E2B (4-bit quantized) from HuggingFace."""
 
     def __init__(self, model_id: str, hf_token: str | None = None):
         print(f"[LLM] Loading: {model_id}")
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        dtype = torch.float16 if device == "cuda" else torch.float32
+        use_cuda = torch.cuda.is_available()
+        token = hf_token or None
 
-        tokenizer = AutoTokenizer.from_pretrained(model_id, token=hf_token or None)
-        model = AutoModelForCausalLM.from_pretrained(
-            model_id,
-            token=hf_token or None,
-            torch_dtype=dtype,
-            device_map="auto" if device == "cuda" else None,
-            low_cpu_mem_usage=True,
-        )
-        self._pipe = pipeline(
-            "text-generation",
-            model=model,
-            tokenizer=tokenizer,
-            max_new_tokens=256,
-            temperature=0.7,
-            do_sample=True,
-            return_full_text=False,
-        )
-        print("[LLM] Ready.")
+        # 4-bit quantization on GPU, fp32 on CPU
+        if use_cuda:
+            bnb = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.bfloat16,
+            )
+            model = AutoModelForCausalLM.from_pretrained(
+                model_id, token=token, quantization_config=bnb, device_map="auto"
+            )
+        else:
+            model = AutoModelForCausalLM.from_pretrained(
+                model_id, token=token, torch_dtype=torch.float32, low_cpu_mem_usage=True
+            )
+
+        # Gemma 4 is multimodal — use the text tokenizer directly
+        processor = AutoTokenizer.from_pretrained(model_id, token=token)
+        self._tok = processor.tokenizer if hasattr(processor, "tokenizer") else processor
+        self._model = model
+        self._device = next(model.parameters()).device
+        print(f"[LLM] Ready on {self._device}.")
 
     def generate(self, messages: list[dict]) -> str:
-        output = self._pipe(messages)
-        return output[0]["generated_text"].strip()
+        # messages may use role="system" (legacy) — normalise to user/assistant only
+        # by merging system content into the first user turn if needed.
+        normalised = []
+        system_prefix = ""
+        for m in messages:
+            if m["role"] == "system":
+                system_prefix = m["content"]
+            elif m["role"] == "user":
+                content = (system_prefix + "\n\n" + m["content"]) if system_prefix else m["content"]
+                normalised.append({"role": "user", "content": content})
+                system_prefix = ""
+            else:
+                normalised.append(m)
+
+        prompt_text = self._tok.apply_chat_template(
+            normalised, add_generation_prompt=True, tokenize=False
+        )
+        inputs = self._tok(prompt_text, return_tensors="pt").to(self._device)
+        input_len = inputs["input_ids"].shape[1]
+
+        with torch.no_grad():
+            out = self._model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_new_tokens=200,
+                do_sample=True,
+                temperature=0.7,
+                repetition_penalty=1.3,
+                eos_token_id=self._tok.eos_token_id,
+                pad_token_id=self._tok.eos_token_id,
+            )
+        text = self._tok.decode(out[0][input_len:], skip_special_tokens=True)
+        text = text.replace("<end_of_turn>", "").replace("<start_of_turn>", "").strip()
+        # Strip Gemma 4 thinking artifacts that leak into output
+        for marker in ("**Note:**", "thought\n", "\nthought", "**Note**"):
+            if marker in text:
+                text = text[:text.index(marker)].strip()
+        return text
 
 
 # ── Main agent ────────────────────────────────────────────────────────────────
@@ -192,14 +270,28 @@ class FoodOrderingAgent:
         self._sessions: dict[str, Session] = {}
         _ensure_csv()
 
-    def respond(self, user_id: str, user_message: str, channel: str = "whatsapp") -> str:
+    def respond(self, user_id: str, user_message: str,
+                channel: str = "whatsapp", phone_number: str | None = None) -> str:
         session = self._get_or_create_session(user_id)
         session.touch()
+
+        # Store caller/sender number immediately — no need to ask
+        if phone_number and not session.phone_number:
+            session.phone_number = phone_number
 
         rag_context = self._rag.get_context_for_query(user_message)
         system = SYSTEM_PROMPT.format(menu_context=rag_context)
 
-        messages = [{"role": "system", "content": system}]
+        # If phone is already known, append that fact so model skips asking for it
+        if session.phone_number:
+            system += f"\n\n[Phone number already collected: {session.phone_number} — do NOT ask for it again]"
+
+        # Gemma 4 merges system into first user turn; prime with a dummy assistant
+        # turn so the model skips the instruction-acknowledgement phase.
+        messages = [
+            {"role": "user", "content": system},
+            {"role": "assistant", "content": "ආයුබෝවන්! Wakwalle Kade ට සාදරයෙන් පිළිගනිමු. මොනවද ගන්නෙ?"},
+        ]
         messages += session.history[-10:]
         messages.append({"role": "user", "content": user_message})
 
@@ -235,12 +327,11 @@ class FoodOrderingAgent:
         if phone_m and not session.phone_number:
             session.phone_number = phone_m.group(0).strip()
 
-        # Check confirmation
-        if re.search(r"\b(yes|confirm|ඔව්|yep|හරි|ස්ථිර)\b", user_msg, re.IGNORECASE):
-            if session.phone_number and session.items:
-                if not session.confirmed:
-                    session.confirmed = True
-                    session.order_id = save_order_to_csv(session, channel)
+        # Check confirmation — items tracked by LLM so only require phone_number
+        if re.search(r"\b(yes|confirm|ඔව්|yep|හරි|ස්ථිර|ok|okay)\b", user_msg, re.IGNORECASE):
+            if session.phone_number and not session.confirmed:
+                session.confirmed = True
+                session.order_id = save_order_to_csv(session, channel)
 
         # Check cancellation
         if re.search(r"\b(cancel|no|nah|bahe|එපා)\b", user_msg, re.IGNORECASE):

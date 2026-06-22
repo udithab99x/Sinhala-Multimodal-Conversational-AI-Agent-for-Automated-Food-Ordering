@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+audio_cache/
+*.aux
+*.log
+*.toc
+*.out
+*.lot
+data/orders.csv

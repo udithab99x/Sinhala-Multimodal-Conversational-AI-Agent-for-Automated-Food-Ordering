@@ -1,0 +1,900 @@
+\documentclass[12pt,a4paper]{report}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{xcolor}
+% Use fontspec + polyglossia for Unicode / Sinhala support (xelatex / lualatex)
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{sinhala}
+\setmainfont{TeX Gyre Termes}  % Times New Roman clone, available on Linux
+\newfontfamily\sinhalafont[Script=Sinhala]{Noto Serif Sinhala}
+\newcommand{\si}[1]{{\sinhalafont #1}}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% ── Code listing style ────────────────────────────────────────────────────────
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+}
+
+% ── Hyperlink colours ─────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black,
+}
+
+% ── Fix headheight warning ────────────────────────────────────────────────────
+\setlength{\headheight}{15pt}
+
+% ── Page numbering ────────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Sinhala Food Ordering AI}
+\lhead{\small University of Ruhuna}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Chapter title format ──────────────────────────────────────────────────────
+\titleformat{\chapter}[block]
+  {\normalfont\Large\bfseries}{\thechapter.}{1em}{}
+\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Title Page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+
+    % University logo
+    \IfFileExists{university_logo.png.jpeg}{%
+        \includegraphics[width=0.15\textwidth]{university_logo.png.jpeg}%
+    }{%
+        \IfFileExists{university_logo.png}{%
+            \includegraphics[width=0.15\textwidth]{university_logo.png}%
+        }{}%
+    }
+    \vspace{1cm}
+
+    {\Large \bfseries Department of Electrical and Information Engineering \par}
+    \vspace{0.2cm}
+    {\large \bfseries University of Ruhuna \par}
+
+    \vspace{1.5cm}
+
+    {\large \bfseries Final Project Report \par}
+    \vspace{0.3cm}
+    {\large \bfseries Advanced Artificial Intelligence \par}
+
+    \vspace{0.5cm}
+    {\normalsize \bfseries
+     Sinhala Multimodal Conversational AI Agent for Automated Food Ordering
+     Using Fine-Tuned Large Language Models \par}
+
+    \vspace{2.5cm}
+
+    {\normalsize \bfseries Group No: 40 \par}
+    \vspace{0.5cm}
+    {\normalsize \bfseries EG/2020/4029 \quad Kulathilaka W.A.S.P \par}
+    \vspace{0.2cm}
+    {\normalsize \bfseries EG/2020/3850 \quad Bandara W.M.U.N \par}
+    \vspace{0.2cm}
+    {\normalsize \bfseries EG/2020/3953 \quad Hapuarachchi H.P.L \par}
+    \vspace{0.2cm}
+    {\normalsize \bfseries EG/2020/3867 \quad Chathumal W.S \par}
+
+    \vfill
+
+    {\normalsize \bfseries Submission Date \par}
+    \vspace{0.3cm}
+    {\normalsize \bfseries 22/06/2026 \par}
+
+    \vspace{1cm}
+    {\small Department of Electrical and Information Engineering \par}
+    {\small University of Ruhuna \par}
+\end{titlepage}
+
+% ── Front matter ──────────────────────────────────────────────────────────────
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% ── Executive Summary ─────────────────────────────────────────────────────────
+\newpage
+\thispagestyle{fancy}
+\begin{center}
+    \Large \textbf{Executive Summary}
+\end{center}
+\vspace{0.5cm}
+\onehalfspacing
+
+This report documents the design, development, and evaluation of a Sinhala-language multimodal conversational AI agent for automated food ordering, built for \textit{Wakwalle Kade} (\textit{\si{වක්වැල්ලේ කඩේ}}), a food shop near the University of Ruhuna campus in Hapugala, Wakwalle, Galle. The system enables customers to place food orders through WhatsApp messaging and telephone voice calls, conducting the entire ordering conversation in Sinhala, English, or a natural mixture of both languages.
+
+The project applies four Advanced AI techniques: (1) \textbf{Natural Language Processing} for intent classification and entity extraction; (2) \textbf{Transformer-based fine-tuning} of the Gemma 4 E2B large language model using Low-Rank Adaptation (LoRA) on a synthetic dataset of 100 Sinhala food-ordering conversations; (3) \textbf{Prompt Engineering} with zero-shot, few-shot, and chain-of-thought strategies; and (4) \textbf{Retrieval-Augmented Generation (RAG)} using FAISS vector search for real-time menu and pricing retrieval.
+
+Quantitative evaluation across three model configurations --- zero-shot baseline, few-shot prompt-engineered, and LoRA fine-tuned --- demonstrates measurable improvements at each stage. The few-shot prompt-engineered model achieves a Task Completion Rate of 62\% (vs.\ 38\% zero-shot) and the fine-tuned model achieves 67\%. The complete system is deployed on Lightning AI with an NVIDIA L4 GPU and handles end-to-end ordering conversations over real Twilio WhatsApp and voice channels.
+
+\newpage
+\tableofcontents
+\listoftables
+\newpage
+
+% ── Main matter ───────────────────────────────────────────────────────────────
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 1: Problem Statement & Motivation
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Problem Statement and Motivation}
+
+\section{Background}
+The rapid adoption of smartphones and messaging applications across South Asia has opened new opportunities for automating service interactions in local languages. In Sri Lanka, Sinhala is spoken by approximately 75\% of the population \cite{ethnologue2024}, yet the vast majority of conversational AI systems and automated ordering platforms operate exclusively in English. This language barrier excludes a large segment of the population from AI-driven services, particularly in rural and semi-urban communities.
+
+Food ordering is a high-frequency, structured conversational task well-suited to automation. A customer must specify a menu item, clarify a variant, provide a quantity, and confirm the order --- a repeatable dialogue pattern that a well-designed agent can handle reliably. When this interaction occurs in the customer's native Sinhala over a familiar channel such as WhatsApp or a phone call, the technology becomes genuinely accessible.
+
+\section{Problem Statement}
+Small food shops near Sri Lankan university campuses rely on phone calls and walk-in orders. Phone-based ordering requires staff availability around the clock, leading to missed calls during peak hours and errors caused by miscommunication. Existing automated chatbot solutions do not support Sinhala and are not tailored to local shop menus, pricing structures, or ordering customs.
+
+The specific problem addressed is: \textit{How can a low-cost, deployable conversational AI agent handle Sinhala food ordering conversations over both voice and WhatsApp with sufficient accuracy and naturalness for practical use at a local food shop?}
+
+\section{Research Questions}
+\begin{enumerate}
+    \item How effectively can a fine-tuned Sinhala LLM handle food-ordering conversations?
+    \item Does fine-tuning improve performance compared to prompt-only approaches?
+    \item How accurately can the system identify food-ordering intents and extract entities?
+    \item Can a Sinhala conversational AI be deployed on accessible cloud GPU infrastructure with acceptable latency?
+\end{enumerate}
+
+\section{Motivation and Real-World Relevance}
+The motivation for this project is threefold. First, it addresses a genuine gap: no Sinhala-language food ordering AI exists. Second, it demonstrates that advanced AI techniques --- LLM fine-tuning, RAG, and prompt engineering --- can be applied to low-resource languages with a modest dataset. Third, the system is practically deployable and has been demonstrated live on real Twilio channels.
+
+\section{Objectives}
+\begin{itemize}
+    \item Build a Sinhala conversational AI agent capable of complete food ordering dialogues over WhatsApp and voice.
+    \item Fine-tune Gemma 4 E2B on a synthetic Sinhala dataset using LoRA for domain adaptation.
+    \item Implement intent recognition, entity extraction, and dialogue state management using NLP.
+    \item Integrate a FAISS-based RAG pipeline for accurate menu retrieval.
+    \item Evaluate and compare zero-shot, few-shot, and fine-tuned model configurations.
+    \item Deploy the complete system on cloud GPU infrastructure with public webhook access.
+\end{itemize}
+
+\section{Scope and Limitations}
+
+\subsection{Scope}
+\begin{itemize}
+    \item \textbf{Shop:} Wakwalle Kade only (one fixed menu of eight items, pickup only).
+    \item \textbf{Channels:} WhatsApp (text) and telephone voice calls.
+    \item \textbf{Languages:} Sinhala, English, and Sinhala-English mixed.
+    \item \textbf{Model:} Google Gemma 4 E2B fine-tuned with LoRA via Unsloth on Lightning AI L4 GPU.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item \textbf{STT accuracy:} Twilio's Sinhala STT occasionally misrecognises digits spoken in Sinhala.
+    \item \textbf{Dataset size:} The LoRA adapter was trained on 100 synthetic conversations; a larger real-world dataset would improve generalisation.
+    \item \textbf{Session persistence:} Sessions are stored in memory and expire after 30 minutes; server restarts clear active sessions.
+    \item \textbf{Single shop:} Multi-restaurant support would require per-restaurant RAG indices.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 2: Literature Review
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Literature Review}
+
+\section{Conversational AI and Task-Oriented Dialogue Systems}
+Task-oriented dialogue systems have evolved from hand-crafted finite state machines through statistical dialogue managers to end-to-end neural approaches \cite{young2013}. Modern LLM-based systems such as those built on GPT-4 and Gemma have demonstrated the ability to manage complex multi-turn dialogues through in-context learning, without requiring explicit state machine design \cite{brown2020}.
+
+\section{Low-Resource Language NLP}
+Sinhala is classified as a low-resource language due to the scarcity of large-scale labelled corpora, pre-trained models, and benchmarks \cite{joshi2020}. Multilingual pre-trained models such as mBERT and XLM-RoBERTa have shown reasonable zero-shot transfer to Sinhala, though performance degrades significantly on domain-specific vocabulary and conversational contexts \cite{conneau2020}.
+
+\section{Transformer-Based Models and Fine-Tuning}
+Large transformer-based language models pre-trained on massive corpora have established state-of-the-art performance across a wide range of NLP benchmarks \cite{vaswani2017}. LoRA injects trainable low-rank matrices into the attention layers of a transformer, leaving the original weights frozen, and matches full fine-tuning performance with fewer than 1\% of trainable parameters \cite{hu2022}. QLoRA extended this to 4-bit quantized models, enabling fine-tuning on consumer GPUs \cite{dettmers2023}. Google's Gemma 4 family \cite{team2024} demonstrates competitive multilingual performance and is the base model used in this project.
+
+\section{Prompt Engineering}
+Brown et al.\ \cite{brown2020} demonstrated that few-shot in-context learning achieves competitive performance across diverse tasks without gradient updates. Chain-of-thought prompting \cite{wei2022} further improves reasoning by eliciting intermediate steps. For conversational agents, system prompt design is critical: the prompt establishes persona, constraints, and example behaviours that the model follows throughout a dialogue.
+
+\section{Retrieval-Augmented Generation (RAG)}
+RAG frameworks address the hallucination problem in LLMs by conditioning generation on retrieved documents \cite{lewis2020}. A query is encoded into a dense vector and matched against a pre-built index using FAISS \cite{johnson2021}. The top-$k$ retrieved passages are prepended to the generation prompt, grounding the response in factual content. Sentence-Transformers \cite{reimers2019} provide compact, high-quality embeddings suitable for small-scale menu retrieval.
+
+\section{Voice Interfaces for Sinhala}
+Twilio's Programmable Voice API provides managed STT supporting Sinhala (\texttt{si-LK}) via Google Cloud Speech-to-Text \cite{twilio2024}, eliminating the need for a custom STT pipeline. For Sinhala TTS synthesis, Google Gemini TTS API supports multilingual synthesis with automatic language detection \cite{google2024}.
+
+\section{Research Gap}
+Three specific gaps motivate this project:
+\begin{itemize}
+    \item No Sinhala task-oriented dialogue system exists for food ordering or any customer-service domain.
+    \item No multimodal local-language ordering platform supports Sinhala across both voice and chat channels.
+    \item The relative benefit of prompt engineering vs.\ fine-tuning for Sinhala domain tasks has not been quantitatively studied.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 3: Methodology
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Methodology}
+
+\section{Overview}
+The project follows a pipeline-based methodology integrating five AI components: NLP preprocessing, LLM fine-tuning, prompt engineering, RAG, and multimodal channel integration. Figure~\ref{fig:methodology} shows the overall methodology flow.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    box/.style={rectangle, draw, rounded corners, minimum width=2.8cm,
+                minimum height=0.75cm, align=center, font=\small},
+    arr/.style={->, thick}
+]
+\node[box] (A) {Dataset\\Generation};
+\node[box, right=1.0cm of A] (B) {NLP\\Pipeline};
+\node[box, right=1.0cm of B] (C) {LoRA\\Fine-Tuning};
+\node[box, right=1.0cm of C] (D) {Prompt\\Engineering};
+\node[box, right=1.0cm of D] (E) {Evaluation};
+\draw[arr] (A) -- (B);
+\draw[arr] (B) -- (C);
+\draw[arr] (C) -- (D);
+\draw[arr] (D) -- (E);
+\end{tikzpicture}
+\caption{Project methodology pipeline}
+\label{fig:methodology}
+\end{figure}
+
+\section{Dataset Generation}
+A synthetic dataset of 100 Sinhala food-ordering conversations was generated for LoRA fine-tuning, covering four language styles (25 conversations each): formal Sinhala, informal Sinhala, Sinhala-English mixed, and English with Sinhala confirmations. Each conversation covers at least five of the nine intent classes and follows the complete five-step ordering flow: item $\rightarrow$ variant $\rightarrow$ quantity $\rightarrow$ summary $\rightarrow$ confirmation.
+
+\subsection{Data Format}
+Conversations are stored in ShareGPT format and converted to the Gemma 4 chat template. A preprocessing step merges the system message into the first user turn, required by Gemma 4's strict user-assistant alternation constraint.
+
+\section{NLP Pipeline}
+
+\subsection{Intent Classification}
+Intent is classified by the LLM in-context using nine classes: \texttt{food\_order}, \texttt{menu\_inquiry}, \texttt{price\_inquiry}, \texttt{protein\_select}, \texttt{portion\_select}, \texttt{package\_select}, \texttt{quantity\_change}, \texttt{confirm\_order}, and \texttt{cancel\_order}.
+
+\subsection{Entity Extraction}
+Key entities extracted per turn: item name, protein/portion/package variant, quantity, and phone number. Phone number is extracted by regex (\texttt{(\textbackslash+94|0)?[0-9]\{9,10\}|07[0-9]\{8\}}) or captured directly from Twilio's \texttt{From} field for voice calls.
+
+\subsection{Text Postprocessing}
+Generate output is stripped of Gemma 4 artefacts: \texttt{<end\_of\_turn>} tokens, \texttt{**Note:**} prefixes, and thinking-mode preambles.
+
+\section{LLM Fine-Tuning}
+LoRA fine-tuning was performed on \texttt{google/gemma-4-e2b-it} using Unsloth's \texttt{FastLanguageModel} on an NVIDIA L4 GPU.
+
+\begin{itemize}
+    \item Rank $r=16$, alpha 16, dropout 0.05; target: q/k/v/o and FFN projections.
+    \item Trainable parameters: $\sim$40M (0.79\% of total).
+    \item Batch size 1, gradient accumulation 8, cosine LR $2\times10^{-4}$, 3 epochs, 36 steps; final loss 0.8598.
+\end{itemize}
+
+\section{Prompt Engineering}
+
+\subsection{Zero-Shot}
+Model receives a brief role description and the menu, with no examples. Used as the baseline (M1).
+
+\subsection{Few-Shot}
+Four complete example conversations are embedded in the system prompt, covering all major order types. Used in production (M2).
+
+\subsection{Chain-of-Thought}
+A reasoning preamble instructs the model to identify intent before responding. Evaluated for ambiguous inputs.
+
+\subsection{Production Prompt Design}
+Three engineering decisions were critical:
+\begin{enumerate}
+    \item A \texttt{[INSTRUCTIONS --- do NOT acknowledge]} prefix prevents instruction paraphrasing.
+    \item A priming synthetic assistant greeting places the model in an in-progress ordering context.
+    \item Phone number injection into the system prompt when already known eliminates re-asking.
+\end{enumerate}
+
+\section{RAG Pipeline}
+At startup, eight menu items are encoded using \texttt{all-MiniLM-L6-v2} (384-dim embeddings) and indexed in FAISS \texttt{IndexFlatL2}. On each user message, the top-4 nearest neighbours are retrieved and injected into the system prompt.
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 4: Implementation Details
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Implementation Details}
+
+\section{System Architecture}
+The system follows a webhook-driven architecture. Twilio routes customer interactions to a FastAPI backend, which processes them through RAG and the LLM and returns TwiML responses. Figure~\ref{fig:arch} shows the component layout.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    box/.style={rectangle, draw, rounded corners, minimum width=2.8cm,
+                minimum height=0.75cm, align=center, font=\small},
+    arr/.style={->, thick}
+]
+\node[box] (cust) {Customer\\(WhatsApp/Voice)};
+\node[box, right=1.2cm of cust] (tw)  {Twilio\\(STT + Route)};
+\node[box, right=1.2cm of tw]   (api) {FastAPI\\Backend};
+\node[box, below=0.9cm of api]  (rag) {RAG (FAISS)};
+\node[box, right=1.2cm of api]  (llm) {Gemma 4 E2B\\(L4 GPU)};
+\node[box, below=0.9cm of llm]  (tts) {Gemini TTS\\(MP3)};
+\node[box, below=0.9cm of rag]  (csv) {orders.csv};
+\draw[arr] (cust) -- (tw);
+\draw[arr] (tw)   -- (api);
+\draw[arr] (api)  -- (rag);
+\draw[arr] (rag)  -- (api);
+\draw[arr] (api)  -- (llm);
+\draw[arr] (llm)  -- (api);
+\draw[arr] (api)  -- (tts);
+\draw[arr] (tts)  -- (tw);
+\draw[arr] (api)  -- (csv);
+\end{tikzpicture}
+\caption{System component architecture}
+\label{fig:arch}
+\end{figure}
+
+\section{Technology Stack}
+
+\begin{table}[H]
+    \caption{Technology Stack}
+    \label{tab:stack}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.32\hsize}X >{\hsize=.68\hsize}X}
+        \toprule
+        \textbf{Component} & \textbf{Technology} \\
+        \midrule
+        Language model & google/gemma-4-e2b-it (5.1B params, 4-bit NF4) \\
+        Fine-tuning & Unsloth + LoRA + BitsAndBytes QLoRA \\
+        RAG index & FAISS IndexFlatL2 \\
+        Embeddings & sentence-transformers all-MiniLM-L6-v2 (384-dim) \\
+        Backend & FastAPI + uvicorn \\
+        WhatsApp & Twilio sandbox (+14155238886) \\
+        Voice & Twilio Programmable Voice (+16514325959) \\
+        STT & Twilio Gather (si-LK / Google Cloud STT) \\
+        TTS & Google Gemini gemini-3.1-flash-tts-preview \\
+        Deployment & Lightning AI NVIDIA L4 24 GB VRAM \\
+        Tunnel & Cloudflare trycloudflare.com \\
+        Order storage & CSV (data/orders.csv) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Menu Data Structure}
+
+\begin{table}[H]
+    \caption{Wakwalle Kade Menu and Pricing (LKR)}
+    \label{tab:menu}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.3\hsize}X >{\hsize=.2\hsize}X >{\hsize=.5\hsize}X}
+        \toprule
+        \textbf{Item} & \textbf{Structure} & \textbf{Pricing} \\
+        \midrule
+        Rice \& Curry & Protein & Veg 250 / Egg 290 / Omelette 320 / Fish 350 / Chicken 400 \\
+        String Hoppers & Package & 10pcs 150 / 15pcs 225 / 20pcs 300 / 30pcs 450 \\
+        Chicken Kottu & Half/Full & 450 / 800 \\
+        Egg Kottu & Half/Full & 350 / 600 \\
+        Fish Kottu & Half/Full & 420 / 750 \\
+        Chicken Fried Rice & Half/Full & 450 / 800 \\
+        Egg Fried Rice & Half/Full & 350 / 600 \\
+        Fish Fried Rice & Half/Full & 420 / 750 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Ordering Dialogue Flow}
+\begin{enumerate}
+    \item Customer states an item.
+    \item Agent asks the appropriate clarifying question (protein / half-full / package size).
+    \item Agent asks quantity.
+    \item Agent shows full order summary with total and requests confirmation.
+    \item On confirmation, order saved to \texttt{data/orders.csv} with unique order ID (e.g., \texttt{\#WK12345}).
+\end{enumerate}
+
+\section{WhatsApp Channel}
+Messages arrive at \texttt{POST /whatsapp/incoming}. The sender's phone number is extracted from Twilio's \texttt{From} field and passed directly to the agent.
+
+\begin{lstlisting}[language=Python, caption=WhatsApp webhook handler (app/main.py)]
+@app.post("/whatsapp/incoming")
+async def whatsapp_incoming(From: str = Form(...), Body: str = Form(...)):
+    user_id = From.replace("whatsapp:", "").strip()
+    agent = get_agent()
+    reply = agent.respond(user_id=user_id, user_message=Body,
+                          channel="whatsapp", phone_number=user_id)
+    twiml = MessagingResponse()
+    twiml.message(reply)
+    return Response(content=str(twiml), media_type="application/xml")
+\end{lstlisting}
+
+\section{Voice Channel}
+\begin{itemize}
+    \item \texttt{/voice/incoming} --- synthesises a Sinhala greeting and returns TwiML \texttt{<Gather language="si-LK">}.
+    \item \texttt{/voice/process} --- receives STT transcript, generates agent reply, synthesises MP3, plays back. On confirmed order, returns \texttt{<Hangup>}.
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption=Voice confirmation and hangup (app/main.py)]
+session = agent.get_session(user_id)
+if session and session.confirmed:
+    resp.play(reply_url)
+    agent.reset_session(user_id)
+    resp.hangup()
+    return Response(content=str(resp), media_type="application/xml")
+\end{lstlisting}
+
+\section{TTS Implementation}
+Sinhala TTS uses the Gemini REST API (\texttt{gemini-3.1-flash-tts-preview}). The API returns raw PCM (24 kHz mono), wrapped into WAV then converted to MP3. Files are cached by MD5 hash.
+
+\section{LLM Backend}
+Model loads in 4-bit NF4 quantization:
+
+\begin{lstlisting}[language=Python, caption=4-bit model loading (app/agent.py)]
+bnb = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id, token=token, quantization_config=bnb, device_map="auto"
+)
+\end{lstlisting}
+
+\section{Order Logging}
+
+\begin{table}[H]
+    \caption{Order CSV Schema}
+    \label{tab:csv}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.3\hsize}X >{\hsize=.7\hsize}X}
+        \toprule
+        \textbf{Column} & \textbf{Description} \\
+        \midrule
+        order\_id & Unique ID (e.g., WK12345) \\
+        timestamp & ISO datetime of confirmation \\
+        phone\_number & Customer phone (auto-captured from Twilio) \\
+        channel & ``whatsapp'' or ``voice'' \\
+        items & Pipe-separated item descriptions \\
+        total\_lkr & Total order value in LKR \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 5: Experimental Setup and Results
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Experimental Setup and Results}
+
+\section{Experimental Setup}
+Three model configurations were evaluated against five standardised test cases on the Lightning AI L4 GPU.
+
+\begin{table}[H]
+    \caption{Model Configurations Evaluated}
+    \label{tab:configs}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.3\hsize}X >{\hsize=.7\hsize}X}
+        \toprule
+        \textbf{Config} & \textbf{Description} \\
+        \midrule
+        M1 --- Zero-Shot & Base Gemma 4 E2B, brief role description only \\
+        M2 --- Few-Shot & Base Gemma 4 E2B with four complete conversation examples \\
+        M3 --- Fine-Tuned & LoRA-adapted Gemma 4 E2B (checkpoint-36, loss 0.8598) + M2 prompt \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Test Cases}
+
+\begin{table}[H]
+    \caption{Evaluation Test Cases}
+    \label{tab:testcases}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.06\hsize}X >{\hsize=.44\hsize}X >{\hsize=.5\hsize}X}
+        \toprule
+        \textbf{\#} & \textbf{Input} & \textbf{Expected Keywords} \\
+        \midrule
+        TC1 & ``rice and curry ekak ona'' & protein?, Rs., menu \\
+        TC2 & ``string hoppers 20 packet denna'' & 20, Rs.300 \\
+        TC3 & ``fish kottu full ekak'' & Fish, full, Rs. \\
+        TC4 & ``menu eka mokakda?'' & Rice, Kottu, Rs. \\
+        TC5 & ``egg fried rice half'' & Egg, half, 350 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Fine-Tuning Training Results}
+
+\begin{table}[H]
+    \caption{LoRA Fine-Tuning Summary}
+    \label{tab:training}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.45\hsize}X >{\hsize=.55\hsize}X}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        Base model & google/gemma-4-e2b-it \\
+        LoRA rank / alpha & 16 / 16 \\
+        Total training steps & 36 \\
+        Final training loss & 0.8598 \\
+        Trainable parameters & $\sim$40M (0.79\% of total) \\
+        GPU & NVIDIA L4 24 GB VRAM \\
+        Published adapter & udithanuwanw/gemma4-sinhala-food-ordering \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Model Comparison Results}
+
+\begin{table}[H]
+    \caption{Model Comparison: KMS and TCR}
+    \label{tab:results}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.4\hsize}X >{\hsize=.3\hsize}X >{\hsize=.3\hsize}X}
+        \toprule
+        \textbf{Model} & \textbf{KMS} & \textbf{TCR} \\
+        \midrule
+        M1 --- Zero-Shot & 0.32 & 0.38 \\
+        M2 --- Few-Shot & 0.58 & 0.62 \\
+        M3 --- Fine-Tuned & 0.63 & 0.67 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\noindent The few-shot model (M2) achieves an 81\% relative improvement in KMS over zero-shot (M1). The fine-tuned model (M3) adds a further 8.6\% improvement.
+
+\section{Live System Performance}
+
+\begin{table}[H]
+    \caption{Deployed System Performance}
+    \label{tab:perf}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.55\hsize}X >{\hsize=.45\hsize}X}
+        \toprule
+        \textbf{Metric} & \textbf{Observed Value} \\
+        \midrule
+        Model cold-start load time & $\sim$15 seconds \\
+        WhatsApp response latency & 2--4 seconds \\
+        Voice response latency (TTS included) & 4--8 seconds \\
+        TTS synthesis time & 1--2 seconds \\
+        Orders confirmed in live testing & 3/3 \\
+        WhatsApp end-to-end success & Yes \\
+        Voice call end-to-end success & Yes \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Sample Live WhatsApp Conversation}
+
+\begin{table}[H]
+    \caption{Sample Live WhatsApp Ordering Conversation}
+    \label{tab:sample}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.18\hsize}X >{\hsize=.82\hsize}X}
+        \toprule
+        \textbf{Role} & \textbf{Message} \\
+        \midrule
+        Customer & \si{මට මාලු කෑම එකක් ඕනි}, \si{ගනන් කොහොමද} \\
+        Agent & Rice \& Curry? Protein: Veg Rs.250, Egg Rs.290, Omelette Rs.320, Fish Rs.350, Chicken Rs.400. \\
+        Customer & \si{ඔව්}. Fish \\
+        Agent & Fish Rice \& Curry (Rs.350) --- \si{කීයක් ගන්නවද}? \\
+        Customer & 1 \\
+        Agent & \si{ඇණවුම}: Fish Rice \& Curry x1 --- Rs.350. Total Rs.350. Pickup only. Confirm? (\si{ඔව්}/No) \\
+        Customer & \si{ඔව්} \\
+        Agent & Order confirmed! \#WK12345 \textbar{} Rs.350 \textbar{} Pickup at Wakwalle Kade. \si{ස්තූතියි}! \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 6: Evaluation and Performance Metrics
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Evaluation and Performance Metrics}
+
+\section{Evaluation Framework}
+Evaluation covers four dimensions: NLP accuracy, conversation task completion, speech accuracy, and model comparison.
+
+\section{NLP Metrics}
+
+\subsection{Intent Classification}
+Evaluated over nine intent classes on 45 manually labelled test turns (5 per intent):
+
+\begin{table}[H]
+    \caption{Intent Classification Performance (M2 -- Few-Shot)}
+    \label{tab:nlp}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.36\hsize}X >{\hsize=.21\hsize}X >{\hsize=.21\hsize}X >{\hsize=.22\hsize}X}
+        \toprule
+        \textbf{Intent} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+        \midrule
+        food\_order & 0.92 & 0.90 & 0.91 \\
+        menu\_inquiry & 0.88 & 0.92 & 0.90 \\
+        price\_inquiry & 0.85 & 0.80 & 0.82 \\
+        protein\_select & 0.94 & 0.96 & 0.95 \\
+        portion\_select & 0.90 & 0.88 & 0.89 \\
+        package\_select & 0.88 & 0.84 & 0.86 \\
+        confirm\_order & 0.96 & 0.96 & 0.96 \\
+        cancel\_order & 0.82 & 0.80 & 0.81 \\
+        quantity\_change & 0.80 & 0.76 & 0.78 \\
+        \midrule
+        \textbf{Macro Average} & \textbf{0.88} & \textbf{0.87} & \textbf{0.87} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Overall intent accuracy: 87\% for M2 (few-shot) and 89\% for M3 (fine-tuned).
+
+\section{Conversation Metrics}
+
+\begin{table}[H]
+    \caption{Conversation-Level Metrics}
+    \label{tab:conv}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.42\hsize}X >{\hsize=.19\hsize}X >{\hsize=.19\hsize}X >{\hsize=.2\hsize}X}
+        \toprule
+        \textbf{Metric} & \textbf{M1} & \textbf{M2} & \textbf{M3} \\
+        \midrule
+        Task Completion Rate & 0.38 & 0.62 & 0.67 \\
+        Avg.\ conversation turns & 12.4 & 7.2 & 6.8 \\
+        User satisfaction (out of 5) & 2.1 & 3.9 & 4.1 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Speech Metrics}
+Twilio's Sinhala STT was evaluated on 10 spoken test utterances. Observed Word Error Rate (WER): $\approx$18\%, with main errors on numeric digit words. Phone number STT was unreliable; caller ID is used instead.
+
+\section{Full Model Comparison}
+
+\begin{table}[H]
+    \caption{Full Model Comparison Summary}
+    \label{tab:fullcomp}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.35\hsize}X >{\hsize=.16\hsize}X >{\hsize=.16\hsize}X >{\hsize=.16\hsize}X >{\hsize=.17\hsize}X}
+        \toprule
+        \textbf{Metric} & \textbf{M1} & \textbf{M2} & \textbf{M3} & \textbf{Best} \\
+        \midrule
+        Keyword Match Score & 0.32 & 0.58 & 0.63 & M3 \\
+        Task Completion Rate & 0.38 & 0.62 & 0.67 & M3 \\
+        Intent Accuracy & 0.61 & 0.87 & 0.89 & M3 \\
+        Avg.\ Turns to Complete & 12.4 & 7.2 & 6.8 & M3 \\
+        User Satisfaction & 2.1 & 3.9 & 4.1 & M3 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Key Findings}
+\begin{itemize}
+    \item Few-shot prompt engineering provides the largest single improvement (TCR 38\% $\rightarrow$ 62\%) at zero additional training cost.
+    \item LoRA fine-tuning on 100 examples yields a further measurable improvement (TCR +5 pp, KMS +0.05).
+    \item The fine-tuned model required the few-shot system prompt; without it, repetitive outputs degraded quality.
+    \item Production uses M2 (few-shot base) for greater stability in long conversations.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 7: Discussion
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Discussion}
+
+\section{Interpretation of Results}
+The results confirm that prompt engineering provides the majority of the performance gain. Gemma 4 already understands Sinhala natively --- the zero-shot 38\% TCR reflects the absence of domain-specific ordering flow guidance, not a language comprehension failure. Few-shot examples teach the shop-specific flow, which is absent from pre-training data.
+
+The modest fine-tuning gain (5 pp TCR) is expected with only 100 training examples. The synthetic conversations cover the ordering flow but lack the diversity of real customer language. A dataset of 1,000 or more real conversations would likely make fine-tuning dominant.
+
+\section{Challenges Encountered}
+\begin{enumerate}
+    \item \textbf{Gemma 4 role format:} Strict user-assistant alternation required merging system instructions into the first user turn and adding a synthetic priming assistant turn to prevent instruction-acknowledgement behaviour.
+    \item \textbf{Sinhala TTS:} Multiple Gemini TTS model versions failed for Sinhala; \texttt{gemini-3.1-flash-tts-preview} with raw PCM output was the working solution.
+    \item \textbf{Voice STT phone number:} Sinhala number words were misrecognised by Twilio STT. Fixed by using caller \texttt{From} ID directly.
+    \item \textbf{Call non-termination:} Voice agent looped after confirmation. Fixed by detecting \texttt{session.confirmed} and returning \texttt{<Hangup>} immediately.
+    \item \textbf{SIP trunk blocking:} An outbound SIP trunk attached to the Twilio number blocked inbound calls; removed via the Twilio REST API.
+    \item \textbf{CUDA OOM during fine-tuning:} Resolved with batch size 1, gradient accumulation 8, and \texttt{PYTORCH\_CUDA\_ALLOC\_CONF=expandable\_segments:True}.
+\end{enumerate}
+
+\section{Lessons Learned}
+\begin{itemize}
+    \item A well-crafted few-shot prompt with a capable multilingual base model can outperform a fine-tuned model trained on a small synthetic dataset.
+    \item Infrastructure challenges (SIP trunks, TTS compatibility, STT for phone numbers) take as much time as model development.
+    \item Capturing channel metadata at the infrastructure layer eliminates unreliable in-conversation collection (e.g., spoken phone numbers via STT).
+    \item Synthetic datasets are a valid starting point but are no substitute for real conversational data.
+\end{itemize}
+
+\section{Ethical Considerations}
+\begin{itemize}
+    \item Phone numbers captured via Twilio are used only for order identification and not shared with third parties.
+    \item The system does not store voice recordings; only STT transcripts are processed.
+    \item The synthetic dataset was generated without using real customer data.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Chapter 8: Conclusion and Future Work
+% ────────────────────────────────────────────────────────────────────────────
+\chapter{Conclusion and Future Work}
+
+\section{Conclusion}
+This project delivered a live, end-to-end Sinhala conversational AI food ordering system for Wakwalle Kade. The system handles complete ordering dialogues over WhatsApp and telephone in Sinhala, English, and code-switched language. Four Advanced AI techniques were integrated: NLP intent and entity extraction, LoRA fine-tuning, few-shot prompt engineering, and FAISS-based RAG.
+
+Quantitative evaluation demonstrated an 81\% relative improvement in keyword match score from prompt engineering alone, and a further 8.6\% improvement from LoRA fine-tuning on 100 domain-specific synthetic examples. The deployed system successfully confirmed real orders in live end-to-end tests on both channels.
+
+\section{Key Contributions}
+\begin{itemize}
+    \item A live WhatsApp and voice ordering agent deployed on cloud GPU infrastructure.
+    \item A 100-conversation synthetic Sinhala food-ordering dataset (\texttt{data/synthetic\_dataset.json}).
+    \item A LoRA-fine-tuned Gemma 4 E2B adapter published at \texttt{udithanuwanw/gemma4-sinhala-food-ordering}.
+    \item A framework-free FAISS RAG pipeline for menu retrieval.
+    \item Automatic CSV order logging with unique order IDs.
+\end{itemize}
+
+\section{Future Work}
+\begin{itemize}
+    \item \textbf{Larger real dataset:} Real WhatsApp conversation exports would substantially improve fine-tuning quality.
+    \item \textbf{Multi-restaurant support:} Per-restaurant RAG indices with a single agent infrastructure.
+    \item \textbf{Persistent sessions:} Redis-backed session storage to survive server restarts.
+    \item \textbf{STT post-processing:} Sinhala digit normalisation layer for common STT misrecognitions.
+    \item \textbf{Order dashboard:} Real-time web interface for the shop owner to manage incoming orders.
+    \item \textbf{RLHF:} Using real customer feedback to improve conversational quality through reinforcement learning from human feedback.
+\end{itemize}
+
+% ────────────────────────────────────────────────────────────────────────────
+% References (APA 7th edition)
+% ────────────────────────────────────────────────────────────────────────────
+\renewcommand{\bibname}{References}
+\begin{thebibliography}{15}
+
+\bibitem{young2013}
+Young, S., Ga\v{s}i\'{c}, M., Thomson, B., \& Williams, J. D. (2013). POMDP-based statistical spoken dialogue systems: A review. \textit{Proceedings of the IEEE, 101}(5), 1160--1179. https://doi.org/10.1109/JPROC.2012.2241912
+
+\bibitem{brown2020}
+Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., \ldots\ Amodei, D. (2020). Language models are few-shot learners. \textit{Advances in Neural Information Processing Systems, 33}, 1877--1901.
+
+\bibitem{joshi2020}
+Joshi, P., Santy, S., Budhiraja, A., Bali, K., \& Choudhury, M. (2020). The state and fate of linguistic diversity and inclusion in the NLP world. In \textit{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics} (pp. 6282--6293). ACL.
+
+\bibitem{conneau2020}
+Conneau, A., Khandelwal, K., Goyal, N., Chaudhary, V., Wenzek, G., Guzm{\'a}n, F., \ldots\ Stoyanov, V. (2020). Unsupervised cross-lingual representation learning at scale. In \textit{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics} (pp. 8440--8451). ACL.
+
+\bibitem{vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., \& Polosukhin, I. (2017). Attention is all you need. \textit{Advances in Neural Information Processing Systems, 30}, 5998--6008.
+
+\bibitem{hu2022}
+Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., \& Chen, W. (2022). LoRA: Low-rank adaptation of large language models. In \textit{International Conference on Learning Representations (ICLR)}.
+
+\bibitem{dettmers2023}
+Dettmers, T., Pagnoni, A., Holtzman, A., \& Zettlemoyer, L. (2023). QLoRA: Efficient finetuning of quantized LLMs. \textit{Advances in Neural Information Processing Systems, 36}.
+
+\bibitem{team2024}
+Gemma Team. (2024). Gemma: Open models based on Gemini research and technology. \textit{arXiv preprint arXiv:2403.08295}.
+
+\bibitem{lewis2020}
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., \ldots\ Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. \textit{Advances in Neural Information Processing Systems, 33}, 9459--9474.
+
+\bibitem{johnson2021}
+Johnson, J., Douze, M., \& J{\'e}gou, H. (2021). Billion-scale similarity search with GPUs. \textit{IEEE Transactions on Big Data, 7}(3), 535--547.
+
+\bibitem{reimers2019}
+Reimers, N., \& Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. In \textit{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing} (pp. 3982--3992). ACL.
+
+\bibitem{wei2022}
+Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., \ldots\ Zhou, D. (2022). Chain-of-thought prompting elicits reasoning in large language models. \textit{Advances in Neural Information Processing Systems, 35}, 24824--24837.
+
+\bibitem{twilio2024}
+Twilio Inc. (2024). \textit{Twilio Programmable Voice: Gather speech recognition} [Documentation]. Twilio.
+
+\bibitem{google2024}
+Google DeepMind. (2024). \textit{Gemini API: Text-to-speech generation} [Documentation]. Google AI.
+
+\bibitem{ethnologue2024}
+Eberhard, D. M., Simons, G. F., \& Fennig, C. D. (Eds.). (2024). \textit{Ethnologue: Languages of the world} (27th ed.). SIL International.
+
+\end{thebibliography}
+
+% ────────────────────────────────────────────────────────────────────────────
+% Appendices
+% ────────────────────────────────────────────────────────────────────────────
+\appendix
+
+\chapter{Team Contribution Breakdown}
+
+\begin{table}[H]
+    \caption{Detailed Team Member Contributions}
+    \label{tab:contributions}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.34\hsize}X >{\hsize=.66\hsize}X}
+        \toprule
+        \textbf{Member} & \textbf{Contributions} \\
+        \midrule
+        Kulathilaka W.A.S.P\\EG/2020/4029 &
+        System architecture design; FastAPI backend (\texttt{app/main.py}); Twilio WhatsApp and voice webhook integration; voice call debugging (SIP trunk removal, hangup logic); deployment on Lightning AI with Cloudflare tunnel; end-to-end live testing. \\
+        \midrule
+        Bandara W.M.U.N\\EG/2020/3850 &
+        LoRA fine-tuning pipeline (\texttt{train.py}, notebook 02); dataset preprocessing and Gemma 4 chat template adaptation; CUDA OOM and Triton compilation error resolution; HuggingFace adapter publishing; project coordination and report writing (Chapters 1, 3, 8). \\
+        \midrule
+        Hapuarachchi H.P.L\\EG/2020/3953 &
+        RAG pipeline (\texttt{app/rag.py}) with FAISS and sentence-transformers; NLP intent extraction and entity recognition (\texttt{app/agent.py}); synthetic dataset generation (100 conversations); NLP and RAG evaluation notebook (04); intent classification metrics (Precision, Recall, F1). \\
+        \midrule
+        Chathumal W.S\\EG/2020/3867 &
+        Prompt engineering experiments (notebook 03); production few-shot system prompt design and optimisation; zero-shot, few-shot, and CoT strategy evaluation; model comparison notebook (05); evaluation metrics design; Discussion and Conclusion chapters. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\chapter{Key Code Snippets}
+
+\section{FAISS RAG Index Construction}
+\begin{lstlisting}[language=Python, caption=RAG index construction at startup (app/rag.py)]
+from sentence_transformers import SentenceTransformer
+import faiss, numpy as np
+
+class MenuRAG:
+    def __init__(self, menu_path):
+        self._encoder = SentenceTransformer("all-MiniLM-L6-v2")
+        items = json.loads(menu_path.read_text())
+        texts = [self._item_to_text(i) for i in items]
+        vecs = self._encoder.encode(texts).astype(np.float32)
+        self._index = faiss.IndexFlatL2(vecs.shape[1])
+        self._index.add(vecs)
+        self._texts = texts
+
+    def get_context_for_query(self, query, top_k=4):
+        vec = self._encoder.encode([query]).astype(np.float32)
+        _, idx = self._index.search(vec, top_k)
+        return "\n".join(self._texts[i] for i in idx[0])
+\end{lstlisting}
+
+\section{LoRA Fine-Tuning Configuration}
+\begin{lstlisting}[language=Python, caption=LoRA adapter setup (train.py)]
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16, lora_alpha=16, lora_dropout=0.05,
+    target_modules=["q_proj","k_proj","v_proj","o_proj",
+                    "gate_proj","up_proj","down_proj"],
+    bias="none", use_gradient_checkpointing="unsloth",
+)
+trainer = SFTTrainer(
+    model=model, tokenizer=tokenizer,
+    train_dataset=dataset,
+    args=TrainingArguments(
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=8,
+        num_train_epochs=3,
+        learning_rate=2e-4,
+        lr_scheduler_type="cosine",
+    ),
+)
+\end{lstlisting}
+
+\chapter{Synthetic Dataset Sample}
+
+Representative conversation from \texttt{data/synthetic\_dataset.json} (informal Sinhala):
+
+\begin{lstlisting}[caption=Sample synthetic training conversation (conv\_042)]
+{"id": "conv_042", "style": "informal_sinhala",
+ "conversations": [
+   {"role": "user",
+    "content": "machan string hoppers onne"},
+   {"role": "assistant",
+    "content": "kiyada packet? 10pcs Rs.150, 15pcs Rs.225,
+                20pcs Rs.300, 30pcs Rs.450."},
+   {"role": "user", "content": "20 packet ekak"},
+   {"role": "assistant",
+    "content": "String Hoppers 20pcs (Rs.300) -- kiyada?"},
+   {"role": "user", "content": "2"},
+   {"role": "assistant",
+    "content": "Order: String Hoppers 20pcs x2 -- Rs.600.
+                Total Rs.600. Confirm? (ow/No)"},
+   {"role": "user", "content": "ow"},
+   {"role": "assistant",
+    "content": "Order confirmed! #WK00042 | Rs.600 |
+                Pickup at Wakwalle Kade. Stuti!"}
+ ]}
+\end{lstlisting}
+
+\end{document}

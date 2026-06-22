@@ -1,0 +1,278 @@
+\documentclass[12pt,a4paper]{report}
+
+% Required Packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+
+% Configuration for hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black,
+}
+
+\begin{document}
+
+% ---------------------------------------------------
+% Title Page
+% ---------------------------------------------------
+\begin{titlepage}
+    \centering
+    % University Logo - Reduced size
+    \includegraphics[width=0.15\textwidth]{university_logo.png}
+    \vspace{1cm}
+    
+    {\Large \bfseries Department of Electrical and Information Engineering \par}
+    \vspace{0.2cm}
+    {\large \bfseries University of Ruhuna \par}
+    
+    \vspace{1.5cm}
+    
+    {\large \bfseries Project Proposal \par}
+    \vspace{0.3cm}
+    {\large \bfseries EC7109 Research Methodology \par}
+    
+    \vspace{0.5cm}
+    {\normalsize \bfseries AI-Based Political Content Analysis and Misinformation Detection System for Social Media in Sri Lanka \par}
+    
+    \vspace{2.5cm}
+    
+    {\normalsize \bfseries Group No: 26 \par}
+    \vspace{0.5cm}
+    {\normalsize \bfseries EG/2020/4202 - Senarathna G.M.L.D \par}
+    \vspace{0.2cm}
+    {\normalsize \bfseries EG/2020/4351 - Perera M.T.T.M \par}
+    
+    \vfill
+    
+    {\normalsize \bfseries Submission date \par}
+    \vspace{0.3cm}
+    {\normalsize \bfseries 24/04/2026 \par}
+    
+    \vspace{1cm}
+    
+    {\small Department of Electrical and Information Engineering \par}
+    {\small University of Ruhuna \par}
+    \vspace{0.5cm}
+\end{titlepage}
+
+% ---------------------------------------------------
+% Abstract
+% ---------------------------------------------------
+\newpage
+\begin{center}
+    \Large \textbf{Abstract}
+\end{center}
+\vspace{0.5cm}
+The exponential proliferation of digital platforms has fundamentally transformed the dissemination of political discourse in Sri Lanka, concurrently accelerating the spread of misinformation and polarized narratives. During critical socio-political events, the lack of automated, context-aware analysis mechanisms leaves the public susceptible to targeted misinformation campaigns. This research proposes an AI-driven, automated political content analysis and misinformation detection system tailored for the Sri Lankan social media landscape. Leveraging advanced Natural Language Processing (NLP), Artificial Intelligence (AI), and a Retrieval-Augmented Generation (RAG) framework, the proposed solution aims to systematically extract, transcribe, analyze, and fact-check socio-political content. By structurally processing video transcripts and textual data, the system evaluates the veracity of political claims and identifies underlying sentiments and biases. The integration of a RAG-based factual verification pipeline establishes a transparent and explainable methodology for mitigating misinformation, ultimately fostering greater political awareness and a more informed democratic process.
+\vspace{1cm}
+
+\tableofcontents
+\newpage
+\onehalfspacing
+
+% ---------------------------------------------------
+% Chapter 1: Introduction
+% ---------------------------------------------------
+\setcounter{chapter}{0}
+\chapter{Introduction}
+
+\section{Background}
+In recent years, social media platforms have emerged as the primary medium for political communication and civic engagement globally. This paradigm shift is highly visible in Sri Lanka, where political personalities, media organizations, and citizen journalists utilize platforms like YouTube, Facebook, and Twitter to distribute political narratives \cite{allcott2017}. While this democratization of information flow promotes civic participation, it also facilitates the rapid, unverified spread of misinformation, deepfakes, and hyper-partisan propaganda. 
+
+The socio-political landscape in Sri Lanka is uniquely complex, characterized by multilingual content, historically sensitive ethnic narratives, and rapidly shifting political allegiances. During election cycles and economic crises, the deliberate dissemination of fake news through video content and text has repeatedly incited social unrest and misinformed voter bases \cite{udupa2020}. Addressing this requires continuous monitoring; however, manual fact-checking and analysis are labor-intensive, unscalable, and often exhibit inherent human biases.
+
+Therefore, an automated, technologically robust mechanism is imperative. The deployment of Artificial Intelligence (AI), specifically state-of-the-art Natural Language Processing (NLP) models integrated with Retrieval-Augmented Generation (RAG), offers a promising and scalable methodology. Such an engineering-based approach can process vast quantities of unstructured data, providing real-time sentiment analysis, narrative tracking, and factual verification, thereby safeguarding the integrity of digital political ecosystems in Sri Lanka.
+
+\section{Problem Statement}
+The core problem addressed by this research is the unchecked proliferation of political misinformation and biased narratives across social media networks in Sri Lanka, exacerbated by the absence of automated, context-specific analytical tools. Currently, audiences consume large volumes of political video and text without an accessible means to verify claims or understand underlying biases. Existing fact-checking initiatives in the region are primarily manual, reactive, and severely constrained by the volume of content generated \cite{hassan2017}. Furthermore, commercially available automated moderation tools are predominantly designed for Western contexts and standard English, failing to accurately interpret the linguistic nuances, localized political jargon, and contextual subtleties inherent to Sri Lankan political discourse. As a result, there is a critical vulnerability in the information ecosystem that manipulates public perception and undermines informed decision-making.
+
+\section{Objectives and Scope}
+\subsection{Objectives}
+\begin{itemize}
+    \item To develop a robust data collection and pre-processing pipeline capable of extracting transcripts and metadata from YouTube videos using the YouTube Data API.
+    \item To implement an NLP-based sentiment and narrative analysis module to quantify political biases and discourse trends.
+    \item To conceptualize and integrate a Retrieval-Augmented Generation (RAG) framework that cross-references extracted claims against a verified vector database of facts to detect misinformation.
+    \item To provide high explainability by surfacing the exact sources and conflicting data retrieved during the fact-checking process.
+    \item To deploy a user-friendly graphical interface (UI) to visualize narrative trends, sentiment distributions, and systemic fact-checking reports.
+\end{itemize}
+
+\subsection{Scope}
+\begin{itemize}
+    \item \textbf{Platform Focus:} The primary data source will be restricted to YouTube, targeting major Sri Lankan news broadcasting channels and political commentary channels.
+    \item \textbf{Language Constraint:} To establish the foundational architecture, the initial scope is limited to analyzing content and transcripts available in the English language or English-translated transcripts.
+    \item \textbf{Thematic Scope:} The system focuses exclusively on political content, specifically analyzing statements from major recognizable political parties and figures in Sri Lanka.
+\end{itemize}
+
+\section{Limitations}
+\begin{itemize}
+    \item \textbf{API Constraints:} Data ingestion is bound by the quota limits and rate restrictions imposed by the YouTube Data API.
+    \item \textbf{Transcription Accuracy:} The system’s accuracy heavily relies on the quality of YouTube's auto-generated transcripts or third-party Speech-to-Text (STT) models, which may struggle with heavy local accents or mixed-language (Singlish) use.
+    \item \textbf{Database Limitations:} The RAG system operates strictly within the confines of the curated vector database; it cannot verify claims pertaining to events absent from its knowledge base.
+\end{itemize}
+
+\section{Expected Outcomes}
+By the summation of this research project, the primary deliverable will be a fully functional, cloud-deployable prototype of the political analysis system. Specifically, the outcomes include:
+\begin{itemize}
+    \item A streamlined pipeline that successfully transforms unstructured Sri Lankan political video content into structured, searchable data.
+    \item A highly explainable misinformation detection engine driven by RAG, effectively grounding claims in factual reality.
+    \item An interactive analytical dashboard enabling users to visualize sentiment trends, bias distribution, and factual credibility within minutes of a video’s upload.
+    \item Enhanced political awareness contributing toward a digitally literate and resilient voter base in Sri Lanka.
+\end{itemize}
+
+% ---------------------------------------------------
+% Chapter 2: Literature Review
+% ---------------------------------------------------
+\chapter{Literature Review}
+
+\section{NLP in Political Discourse Analysis}
+The application of Natural Language Processing to analyze political discourse has seen significant advancement. Researchers have utilized topic modeling and named entity recognition to track how political campaigns unfold across Twitter \cite{daniel2019}. However, most models are trained on Western datasets, resulting in a systemic performance degradation when evaluating the political semantics of developing nations \cite{joshi2020}.
+
+\section{Sentiment Analysis on Social Media}
+Sentiment analysis algorithms, spanning from lexicon-based approaches to advanced Transformer models like BERT, have been extensively used to measure public opinion. Recent studies indicate that fine-tuning transformer models on domain-specific political texts increases contextual classification accuracy by over 15\% compared to zero-shot generalized models \cite{kaliyar2020}.
+
+\section{Retrieval-Augmented Generation (RAG) Systems}
+RAG frameworks have been identified as exceptional tools for mitigating LLM hallucinations in knowledge-intensive NLP tasks \cite{lewis2020}. By separating the reasoning capability of LLMs from human-curated factual databases, RAG systems provide highly verifiable and dynamically updatable responses. Their application in automated journalism and legal analysis is documented, but implementations targeting political fact-checking remain sparse \cite{akhtar2021}.
+
+\section{Speech-to-Text (STT) Systems for Video Analysis}
+Video content represents the highest-engagement medium in modern political campaigning. Advanced STT models, such as OpenAI's Whisper, have drastically reduced Word Error Rates (WER), allowing researchers to systematically convert political speeches into indexable text \cite{radford2023}. Integrating this technology enables text-based NLP pipelines to directly analyze multimedia content.
+
+\section{Research Gap}
+A review of current computational socio-political analysis tools reveals several critical deficiencies that this research intends to resolve:
+\begin{itemize}
+    \item \textbf{Lack of Sri Lankan-Focused Systems:} Vast amounts of applied NLP research disregard localized socio-political contexts. There is a glaring absence of systemic tools specifically calibrated for the Sri Lankan political environment and its unique discourse patterns.
+    \item \textbf{Absence of an Integrated Pipeline:} Existing works often isolate tasks such as sentiment analysis or speech-to-text transcription \cite{singhal2019}. There is a lack of end-to-end pipelines that seamlessly transcribe, process, analyze, and fact-check multimedia content within a single architecture.
+    \item \textbf{Limited Use of RAG in Political Fact-Checking:} While Large Language Models (LLMs) are used for analysis, they are prone to hallucinations. The application of RAG architectures to ground AI responses in verified, authoritative political datasets remains heavily underexplored in this domain.
+    \item \textbf{Lack of Explainability:} Current commercial content classifiers provide binary outputs (e.g., `Fake'' or `Real'') without providing verifiable evidence, limiting user trust.
+\end{itemize}
+
+% ---------------------------------------------------
+% Chapter 3: Methodology
+% ---------------------------------------------------
+\chapter{Research Methodology}
+The proposed methodology follows a systematic pipeline architecture designed to ingest, process, and analyze political content efficiently.
+
+\section{System Architecture}
+The architecture relies on a loosely coupled microservices structure to ensure scalability. The conceptual flow of the system consists of five primary stages operating in an interconnected pipeline. First, the data ingestion module interfaces with external video APIs (such as the YouTube API) to fetch content. Second, the pre-processing and Speech-to-Text (STT) layer handles noise removal and audio-to-text conversion. Third, the embedding layer processes these text chunks into semantic vector representations, storing them in a scalable Vector Database. Fourth, the Retrieval-Augmented Generation (RAG) engine operates at the core, using the database to ground the Large Language Model (LLM) responses with factual context for misinformation detection. Finally, an interactive dashboard aggregates the API responses into a visual representation for end users.
+
+\section{Data Collection}
+We will utilize the official YouTube Data API v3 to automate the extraction of video URLs, publication dates, and channel metadata from predefined Sri Lankan political channels. Utilizing Python-based scraping libraries (e.g., yt-dlp or youtube-transcript-api), the system will download the corresponding audio tracks or closed captions (CC). 
+
+\section{Data Processing}
+Raw conversational text requires intense pre-processing. The processing module will handle:
+\begin{itemize}
+    \item \textbf{Transcription:} For videos lacking CC, a pre-trained STT model will transcribe the audio.
+    \item \textbf{Cleaning:} Removal of filler words, non-alphabetical characters, and normalization of political acronyms.
+    \item \textbf{Chunking:} Using tokenizers to split long transcripts into semantically coherent overlapping chunks (e.g., 500-token blocks) optimized for embedding.
+\end{itemize}
+
+\section{Embedding and Vector Representation}
+To represent semantic meaning, the chunked text data will be processed through high-dimensional embedding models (such as text-embedding-ada-002 or an open-source equivalent). These embeddings convert nuanced political statements into vector space, enabling the algorithmic calculation of cosine similarity between varying texts.
+
+\section{RAG Pipeline Implementation}
+The misinformation detection engine operates via the RAG architecture:
+\begin{itemize}
+    \item \textbf{Query Formulation:} Extracted political claims from videos act as the query.
+    \item \textbf{Retrieval:} The system queries a pre-established Vector Database (containing verified news, parliamentary records, and factual data) to retrieve the top-$K$ most relevant factual contexts.
+    \item \textbf{Generation and Verification:} An LLM assesses the original claim against the retrieved factual context, generating an assessment report (e.g., Verified, Partially False, False) complete with citations.
+\end{itemize}
+
+% ---------------------------------------------------
+% Chapter 4: Project Management
+% ---------------------------------------------------
+\chapter{Project Management}
+
+\section{Time Plan}
+The project will be executed over a systematic timeline, divided into primary engineering phases.
+
+\begin{table}[H]
+    \caption{Proposed Project Timeline}
+    \label{tab:timeline}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.2\hsize}X >{\hsize=.8\hsize}X}
+        \toprule
+        \textbf{Week(s)} & \textbf{Major Task / Milestone} \\
+        \midrule
+        Wk 01 -- 02 & Thorough Literature Review \& Requirement Analysis \\
+        Wk 03 -- 04 & Setup of YouTube Data Collection \& Parsing Scripts \\
+        Wk 05 -- 06 & Development of STT \& Data Processing pipeline \\
+        Wk 07 -- 09 & Implementation of Vector Database \& Embedding Model \\
+        Wk 10 -- 11 & RAG Integration and LLM prompt engineering \\
+        Wk 12 -- 13 & User Interface (UI) Development and API mapping \\
+        Wk 14 -- 15 & System Integration, Beta Testing, \& Bug fixing \\
+        Wk 16 & Final Documentation, thesis writing, \& Submission \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Budget}
+The estimated budget highlights expected costs, prioritizing cloud computation facilities necessary for AI execution.
+
+\begin{table}[H]
+    \caption{Estimated Project Budget Area}
+    \label{tab:budget}
+    \centering
+    \begin{tabularx}{\columnwidth}{>{\hsize=.6\hsize}X r}
+        \toprule
+        \textbf{Resource / Item} & \textbf{Cost (LKR)} \\
+        \midrule
+        Cloud Computing (AWS/GCP, 4 months) & 45,000 \\
+        OpenAI/LLM API Credits & 30,000 \\
+        Vector Database Hosted Service (Pinecone) & 15,000 \\
+        Domain Name \& UI Hosting & 5,000 \\
+        Contingency \& Miscellaneous Expenses & 10,000 \\
+        \midrule
+        \textbf{Total Estimated Budget} & \textbf{105,000} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% ---------------------------------------------------
+% References
+% ---------------------------------------------------
+\renewcommand{\bibname}{References}
+\begin{thebibliography}{10}
+
+\bibitem{allcott2017}
+H. Allcott and M. Gentzkow, `Social media and fake news in the 2016 election,'' \textit{Journal of Economic Perspectives}, vol. 31, no. 2, pp. 211--236, 2017.
+
+\bibitem{udupa2020}
+S. Udupa et al., `Social Media and Political Campaigns in Sri Lanka,'' \textit{Journal of South Asian Studies}, vol. 43, no. 3, pp. 450--468, 2020.
+
+\bibitem{hassan2017}
+N. Hassan et al., `Toward automated fact-checking: Detecting check-worthy factual claims by computational fact-checkers,'' \textit{Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2017, pp. 1803--1812.
+
+\bibitem{singhal2019}
+S. Singhal et al., `SpotFake: A Multi-modal Framework for Fake News Detection,'' \textit{2019 IEEE Fifth International Conference on Multimedia Big Data (BigMM)}, 2019, pp. 39--47.
+
+\bibitem{daniel2019}
+M. Daniel et al., `Understanding Political Campaigns on Twitter,'' \textit{IEEE Access}, vol. 7, pp. 36720--36735, 2019.
+
+\bibitem{joshi2020}
+J. Joshi et al., `The State and Fate of Linguistic Diversity and Inclusion in the NLP World,'' \textit{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, 2020, pp. 6282--6293.
+
+\bibitem{kaliyar2020}
+R. K. Kaliyar et al., `FakeBERT: Fake news detection in social media with a BERT-based deep learning approach,'' \textit{Multimedia Tools and Applications}, vol. 79, pp. 11765--11788, 2020.
+
+\bibitem{lewis2020}
+P. Lewis et al., `Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,'' \textit{Advances in Neural Information Processing Systems}, vol. 33, pp. 9459--9474, 2020.
+
+\bibitem{akhtar2021}
+M. S. Akhtar et al., `A survey on automated fact-checking,'' \textit{IEEE Transactions on Knowledge and Data Engineering}, vol. 34, no. 7, pp. 3174--3193, 2021.
+
+\bibitem{radford2023}
+A. Radford et al., `Robust Speech Recognition via Large-Scale Weak Supervision,'' \textit{International Conference on Machine Learning (ICML)}, PMLR, 2023, pp. 28492--28518.
+
+\end{thebibliography}
+
+\end{document}
